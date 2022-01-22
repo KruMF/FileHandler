@@ -1,16 +1,46 @@
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
+import fileHandler.FileHandler;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TextTest {
 
+    private static final String
+            DIRECTORY = "resources",
+            READ_TEST_FILE_NAME = "textReadTest",
+            WRITE_TEST_FILE_NAME = "textWriteTest";
+
     @BeforeAll
     static void initialize() {
         //set common variables
+    }
+
+    /**
+     * Tests file path creation.
+     * TODO: move to another class
+     */
+    @Test
+    void pathTest() {
+        String dir = "dir", slash = "/", file = "file";
+        String expected = dir + slash + file;
+        String actual = FileHandler.path(dir, file);
+        assertEquals(expected, actual, "Not creating file path correctly.");
+    }
+
+    /**
+     * Tests file existence check.
+     * TODO: move to another class
+     */
+    @Test
+    void fileExistenceCheckTest() {
+        //check file existence
+        //TODO: make this test
+        assertEquals(true, false, "File existence check test not working.");
     }
 
     /**
@@ -30,8 +60,7 @@ public class TextTest {
         }};
 
         //read text lines from preprepared file
-        //TODO: get lines from method
-        ArrayList<String> actual = null;
+        ArrayList<String> actual = FileHandler.readLines(FileHandler.path(DIRECTORY, READ_TEST_FILE_NAME));
 
         assertEquals(expected, actual,"Not reading lines of text.");
     }
@@ -53,8 +82,7 @@ public class TextTest {
         }};
 
         //convert read text lines to arrays of strings
-        //TODO: get from method
-        ArrayList<String[]> actual = null;
+        ArrayList<String[]> actual = FileHandler.readSeparatedLines(FileHandler.path(DIRECTORY, READ_TEST_FILE_NAME));;
 
         assertEquals(expected, actual, "Not converting read lines to string arrays.");
     }
@@ -81,8 +109,7 @@ public class TextTest {
         }};
 
         //convert read text lines to map of string arrays
-        //TODO: get from method
-        HashMap<String, String[]> actual = null;
+        HashMap<String, String[]> actual = FileHandler.readStringArrayMap(FileHandler.path(DIRECTORY, READ_TEST_FILE_NAME));;
 
         assertEquals(expected, actual, "Not converting read lines to map of string arrays.");
     }
@@ -90,10 +117,14 @@ public class TextTest {
     @Test
     void writeTest() {
         //generate file and write text
+        //TODO: make this test
+        assertEquals(true, false, "Write test not working.");
     }
 
     @Test
     void rereadTest() {
         //read text from generated file
+        //TODO: make this test
+        assertEquals(true, false, "Reread test not working.");
     }
 }

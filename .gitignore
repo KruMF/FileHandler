@@ -1,2 +1,6 @@
 # Ignore this
 /.idea/
+
+# temporarily disable all output
+# TODO: add nuances to his
+/target/
