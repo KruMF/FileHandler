@@ -1,7 +1,7 @@
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-public class Test1 {
+public class TextTest {
     @BeforeAll
     static void initialize() {
         //set common variables
