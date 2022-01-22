@@ -7,14 +7,16 @@ import java.util.List;
 
 import static java.nio.file.Files.readAllLines;
 
-class TextFileReader extends CommonFunctionality {
+class TextFileReader {
+    //TODO: remove from here
+    private static final String valueSeparator = " : ";
 
     /**
      * Reads a text file.
      * @param filePath Path for file to read.
      * @return Array of key-value pairs by order of read, if read. Null, if any problems.
      */
-    ArrayList<String[]> read(String filePath){
+    ArrayList<String[]> read(String filePath) {
         if (filePath == null) {
             System.out.println("Null filepath provided.");
         } else {
@@ -29,14 +31,14 @@ class TextFileReader extends CommonFunctionality {
      * @param filePath Path for file to read.
      * @return Array of read lines by order of read. Null, if not read.
      */
-    private String[] readFile(String filePath){
+    private String[] readFile(String filePath) {
         System.out.println("Reading file from " + filePath);
-        if (checkFileStatus(filePath)) {
+        if (FileHandler.checkFileStatus(filePath)) {
             try {
-                List<String> linesRead = readAllLines(Path.of(filePath), encoding);
+                List<String> linesRead = readAllLines(Path.of(filePath), FileHandler.encoding);
                 if (linesRead.size() < 1) System.out.println("File empty or incorrect encoding");
                 else {
-                    System.out.println("Number of lines read: " + linesRead.size() + ", encoding: " + encoding);
+                    System.out.println("Number of lines read: " + linesRead.size() + ", encoding: " + FileHandler.encoding);
                     return linesRead.toArray(new String[0]);
                 }
             } catch (IOException e) {
@@ -52,7 +54,7 @@ class TextFileReader extends CommonFunctionality {
      * @param readLines Lines read from file.
      * @return Array of key-value pairs by order of read.
      */
-    private ArrayList<String[]> prepareReturnableData(String[] readLines){
+    private ArrayList<String[]> prepareReturnableData(String[] readLines) {
         ArrayList<String[]> returnableData = new ArrayList<>();
         for (String readLine : readLines) {
             String[] splitString = readLine.split(valueSeparator);

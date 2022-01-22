@@ -7,7 +7,9 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
-class TextFileWriter extends CommonFunctionality {
+class TextFileWriter {
+    //TODO: remove from here
+    private static final String valueSeparator = " : ";
 
     void writeToFile(String filePath, ArrayList<String[]> writableData){
         try {
@@ -30,7 +32,7 @@ class TextFileWriter extends CommonFunctionality {
                 writableLines.add(writableLine.toString());
             }
 
-            Files.write(Path.of(filePath), writableLines, encoding);
+            Files.write(Path.of(filePath), writableLines, FileHandler.encoding);
 
         } catch (IOException e) {
             System.err.println("An I/O exception occurred while creating file");

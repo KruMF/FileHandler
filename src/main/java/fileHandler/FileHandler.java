@@ -1,6 +1,8 @@
 package fileHandler;
 
 import java.awt.*;
+import java.io.File;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -10,6 +12,8 @@ public class FileHandler {
     private static final TextFileWriter textWriter = new TextFileWriter();
     private static final ImageReader imageReader = new ImageReader();
 
+    static final Charset encoding = Charset.forName("Cp1257");
+
     private String separator;
     private String directory;
 
@@ -18,6 +22,7 @@ public class FileHandler {
      *
      * @param directory Directory for files.
      */
+    @SuppressWarnings("unused")
     public FileHandler(String directory) {
         this.separator = NullCheck.nullSeparatorCheck(null);
         this.directory = NullCheck.nullDirectoryCheck(directory);
@@ -29,6 +34,7 @@ public class FileHandler {
      * @param separator Value separator for text files.
      * @param directory Directory for files.
      */
+    @SuppressWarnings("unused")
     public FileHandler(String separator, String directory) {
         this.separator = NullCheck.nullSeparatorCheck(separator);
         this.directory = NullCheck.nullDirectoryCheck(directory);
@@ -39,6 +45,7 @@ public class FileHandler {
      *
      * @param separator New separator.
      */
+    @SuppressWarnings("unused")
     public void setSeparator(String separator) {
         this.separator = NullCheck.nullSeparatorCheck(separator);
     }
@@ -48,6 +55,7 @@ public class FileHandler {
      *
      * @param directory New directory.
      */
+    @SuppressWarnings("unused")
     public void setDirectory(String directory) {
         this.directory = NullCheck.nullDirectoryCheck(directory);
     }
@@ -57,6 +65,7 @@ public class FileHandler {
      *
      * @return Current directory.
      */
+    @SuppressWarnings("unused")
     public String getDirectory() {
         return directory;
     }
@@ -65,6 +74,21 @@ public class FileHandler {
     public static String path(String directory, String fileName) {
         String slash = "/";
         return directory + slash + fileName;
+    }
+
+    /**
+     * Check readability of a file.
+     * @param filePath Path for file to read
+     * @return True, if ok. False, if file not found or non-readable.
+     */
+    static boolean checkFileStatus(String filePath){
+        File fileToCheck = new File(filePath);
+
+        if (!fileToCheck.exists()) System.out.println("File not found");
+        else if (!fileToCheck.canRead()) System.out.println("File not readable");
+        else return true;
+
+        return false;
     }
 
     /**

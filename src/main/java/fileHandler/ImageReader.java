@@ -5,10 +5,10 @@ import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 
-class ImageReader extends CommonFunctionality {
-    Image readSingleImage(String filePath){
+class ImageReader {
+    Image readSingleImage(String filePath) {
         System.out.println("Loading image from " + filePath);
-        if(checkFileStatus(filePath)) {
+        if(FileHandler.checkFileStatus(filePath)) {
             File imageFile = new File(filePath);
             try {
                 return ImageIO.read(imageFile);

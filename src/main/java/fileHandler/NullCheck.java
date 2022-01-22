@@ -3,8 +3,8 @@ package fileHandler;
 /**
  * Helper class for checking null values.
  */
-public class NullCheck {
-    private static final String DEFAULT_SEPARATOR = " : ";
+class NullCheck {
+    private static final String DEFAULT_SEPARATOR = " : "; //mind the spaces around the colon
 
     protected static String nullDirectoryCheck(String directory) {
         return nullStringCheck(directory, "");
