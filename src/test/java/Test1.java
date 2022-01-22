@@ -4,11 +4,21 @@ import org.junit.jupiter.api.Test;
 public class Test1 {
     @BeforeAll
     static void initialize() {
-
+        //set common variables
     }
 
     @Test
-    void test() {
+    void readTest() {
+        //read text from preprepared file
+    }
 
+    @Test
+    void writeTest() {
+        //generate file and write text
+    }
+
+    @Test
+    void rereadTest() {
+        //read text from generated file
     }
 }
