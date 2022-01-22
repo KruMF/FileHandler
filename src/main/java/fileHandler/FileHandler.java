@@ -10,50 +10,51 @@ public class FileHandler {
     private static final TextFileWriter textWriter = new TextFileWriter();
     private static final ImageReader imageReader = new ImageReader();
 
-    private static final String DEFAULT_SEPARATOR = " : ";
     private String separator;
     private String directory;
 
-    //TODO: add javadoc
+    /**
+     * Creates a FileHandler with specified directory and default separator.
+     *
+     * @param directory Directory for files.
+     */
     public FileHandler(String directory) {
-        this.separator = nullSeparatorCheck(null);
-        this.directory = nullDirectoryCheck(directory);
+        this.separator = NullCheck.nullSeparatorCheck(null);
+        this.directory = NullCheck.nullDirectoryCheck(directory);
     }
 
-    //TODO: add javadoc
+    /**
+     * Creates a FileHandler with specified parameters.
+     *
+     * @param separator Value separator for text files.
+     * @param directory Directory for files.
+     */
     public FileHandler(String separator, String directory) {
-        this.separator = nullSeparatorCheck(separator);
-        this.directory = nullDirectoryCheck(directory);
+        this.separator = NullCheck.nullSeparatorCheck(separator);
+        this.directory = NullCheck.nullDirectoryCheck(directory);
     }
 
-    //TODO: add javadoc
-    private static String nullDirectoryCheck(String directory) {
-        if (directory == null) {
-            directory = "";
-        }
-        return directory;
-    }
-
-    //TODO: add javadoc
-    private static String nullSeparatorCheck(String separator) {
-        if (separator == null) {
-            separator = DEFAULT_SEPARATOR;
-        }
-        return separator;
-    }
-
-    //TODO: add javadoc
+    /**
+     * Sets the separator.
+     *
+     * @param separator New separator.
+     */
     public void setSeparator(String separator) {
-        this.separator = nullSeparatorCheck(separator);
+        this.separator = NullCheck.nullSeparatorCheck(separator);
     }
 
-    //TODO: add javadoc
+    /**
+     * Sets the directory.
+     *
+     * @param directory New directory.
+     */
     public void setDirectory(String directory) {
-        this.directory = nullDirectoryCheck(directory);
+        this.directory = NullCheck.nullDirectoryCheck(directory);
     }
 
     /**
      * Gets the current directory.
+     *
      * @return Current directory.
      */
     public String getDirectory() {
