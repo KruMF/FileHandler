@@ -5,12 +5,16 @@ import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 
-class ImageHandler {
+//TODO: add javadoc
+public class ImageHandler {
     protected ImageHandler() {}
 
-    public Image readSingleImage(String filePath) {
+    //TODO: add javadoc
+    @SuppressWarnings("unused")
+    public Image readSingleImage(String fileName, FileHandler fileHandler) {
+        String filePath = fileHandler.path(fileName);
         System.out.println("Loading image from " + filePath);
-        if(FileHandler.checkFileStatus(filePath)) {
+        if(fileHandler.checkFileStatus(filePath)) {
             File imageFile = new File(filePath);
             try {
                 return ImageIO.read(imageFile);
