@@ -3,7 +3,6 @@ package fileHandler;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
-import java.util.List;
 
 public class TextConversion {
     /**
@@ -15,6 +14,7 @@ public class TextConversion {
      * @return ArrayList of string arrays separated by separator.
      */
     public static ArrayList<String[]> separateLines(String separator, ArrayList<String> lines) {
+        separator = NullCheck.nullSeparatorCheck(separator);
         if (separabilityCheck(separator, lines)) {
             ArrayList<String[]> returnableData = new ArrayList<>();
 
@@ -61,7 +61,7 @@ public class TextConversion {
                         // if line contains only key and no value
                         value = null;
                     } else {
-                        value = Arrays.copyOfRange(line, 1, line.length - 1);
+                        value = Arrays.copyOfRange(line, 1, line.length);
                     }
                     stringMap.put(key, value);
                 }
@@ -75,13 +75,19 @@ public class TextConversion {
 
     //TODO: add javadoc
     public static ArrayList<String> combineLines(String separator, ArrayList<String[]> separatedLines) {
-        ArrayList<String> combinedLines = new ArrayList<>();
+        try {
+            separator = NullCheck.nullSeparatorCheck(separator);
+            ArrayList<String> combinedLines = new ArrayList<>();
 
-        for (String[] splitLine : separatedLines) {
-            combinedLines.add(combineLine(separator, splitLine));
+            for (String[] splitLine : separatedLines) {
+                combinedLines.add(combineLine(separator, splitLine));
+            }
+
+            return combinedLines;
+        } catch (NullPointerException e) {
+            System.out.println("Null ArrayList provided. Unable to combine.");
+            return null;
         }
-
-        return combinedLines;
     }
 
     private static String combineLine(String separator, String[] combinable) {

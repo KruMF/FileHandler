@@ -3,11 +3,11 @@ import fileHandler.FileHandler;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import fileHandler.TextConversion;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class TextTest {
     private static final String
@@ -24,19 +24,17 @@ public class TextTest {
 
     /**
      * Tests file path creation.
-     * TODO: move to another class
      */
     @Test
     void pathTest() {
-        String dir = DIRECTORY, slash = "/", file = "file";
-        String expected = dir + slash + file;
-        String actual = fileHandler.path(file);
+        String fileName = "file";
+        String expected = DIRECTORY + "/" + fileName;
+        String actual = fileHandler.path(fileName);
         assertEquals(expected, actual, "Not creating file path correctly.");
     }
 
     /**
      * Tests file existence check.
-     * TODO: move to another class
      */
     @Test
     void fileExistenceCheckTest() {
@@ -78,16 +76,18 @@ public class TextTest {
                 line2 = new String[] {"row2", "data2"},
                 line3 = new String[] {"row3", "data3a", "data3b", "data3c"};
 
-        ArrayList<String[]> expected = new ArrayList<>() {{
+        ArrayList<String> expected = TextConversion.combineLines(null, new ArrayList<>() {{
             add(line1);
             add(line2);
             add(line3);
-        }};
+        }});
 
         //convert read text lines to arrays of strings
-        ArrayList<String[]> actual = fileHandler.text.readSeparatedLines(READ_TEST_FILE_NAME, fileHandler);
+        ArrayList<String> actual = TextConversion.combineLines(
+                null,
+                fileHandler.text.readSeparatedLines(READ_TEST_FILE_NAME, fileHandler));
 
-        assertEquals(expected, actual, "Not converting read lines to string arrays.");
+        assertLinesMatch(expected, actual, "Not converting read lines to string arrays.");
     }
 
     /**
@@ -105,29 +105,39 @@ public class TextTest {
                 value2 = new String[] {"data2"},
                 value3 = new String[] {"data3a", "data3b", "data3c"};
 
-        HashMap<String, String[]> expected = new HashMap<>() {{
-            put(key1, value1);
-            put(key2, value2);
-            put(key3, value3);
-        }};
+        ArrayList<String> expected = TextConversion.combineLines(
+                null,
+                TextConversion.arrayListFromStringMap(new HashMap<>() {{
+                    put(key1, value1);
+                    put(key2, value2);
+                    put(key3, value3);
+                }}));
 
         //convert read text lines to map of string arrays
-        HashMap<String, String[]> actual = fileHandler.text.readStringMap(READ_TEST_FILE_NAME, fileHandler);
+        ArrayList<String> actual = TextConversion.combineLines(
+                null,
+                TextConversion.arrayListFromStringMap(
+                        fileHandler.text.readStringMap(READ_TEST_FILE_NAME, fileHandler)));
 
-        assertEquals(expected, actual, "Not converting read lines to map of string arrays.");
+        assertLinesMatch(expected, actual, "Not converting read lines to map of string arrays.");
     }
 
     @Test
     void writeTest() {
-        //generate file and write text
-        //TODO: make this test
-        assertEquals(true, false, "Write test not working.");
-    }
+        String
+                key = "working",
+                value = "true";
 
-    @Test
-    void rereadTest() {
-        //read text from generated file
-        //TODO: make this test
-        assertEquals(true, false, "Reread test not working.");
+        ArrayList<String> expected = TextConversion.combineLines(null, new ArrayList<>() {{
+            add(new String[] {key, value});
+        }});
+
+        //generate file and write text
+        fileHandler.text.writeLines(WRITE_TEST_FILE_NAME, fileHandler, expected);
+
+        //read written file
+        ArrayList<String> actual = fileHandler.text.readLines(WRITE_TEST_FILE_NAME, fileHandler);
+
+        assertLinesMatch(expected, actual, "Write test not working.");
     }
 }

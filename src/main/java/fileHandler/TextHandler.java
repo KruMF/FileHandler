@@ -11,8 +11,8 @@ public class TextHandler {
     private Charset encoding;
     private String separator;
 
-    private TextReader textReader;
-    private TextWriter textWriter;
+    private final TextReader textReader = new TextReader();
+    private final TextWriter textWriter = new TextWriter();
 
     /**
      * Creates a text handler with default parameters.
@@ -20,9 +20,6 @@ public class TextHandler {
     protected TextHandler() {
         encoding = EncodingUtilities.encodingTypeToCharset();
         separator = NullCheck.nullSeparatorCheck(null);
-
-        textReader = new TextReader();
-        textWriter = new TextWriter();
     }
 
     /**
@@ -54,8 +51,8 @@ public class TextHandler {
      * @return Read lines as ArrayList of strings. Null if not read.
      */
     public ArrayList<String> readLines(String fileName, FileHandler fileHandler) {
-        String filePath = fileHandler.path(fileName);
-        if (fileHandler.checkFileStatus(filePath)) {
+        if (fileHandler.checkFileStatus(fileName)) {
+            String filePath = fileHandler.path(fileName);
             return textReader.readFile(filePath, encoding);
         }
         return null;
@@ -97,6 +94,7 @@ public class TextHandler {
     }
 
     //TODO: add javadoc
+    @SuppressWarnings("unused")
     public void writeStringMap(String fileName, FileHandler fileHandler, HashMap<String, String[]> writableData) {
         writeSeparatedLines(fileName, fileHandler, TextConversion.arrayListFromStringMap(writableData));
     }

@@ -3,6 +3,7 @@ package fileHandler;
 import java.io.File;
 
 //TODO: add javadoc
+@SuppressWarnings("unused")
 public class FileHandler {
     protected String directory;
 
@@ -13,7 +14,6 @@ public class FileHandler {
      * Default FileHandler constructor with empty string as directory.
      * Use this constructor with caution.
      */
-    @SuppressWarnings("unused")
     public FileHandler() {
         this.directory = NullCheck.nullDirectoryCheck(null);
     }
@@ -32,7 +32,6 @@ public class FileHandler {
      *
      * @param directory New directory. (Null - empty string)
      */
-    @SuppressWarnings("unused")
     public void setDirectory(String directory) {
         this.directory = NullCheck.nullDirectoryCheck(directory);
     }
@@ -42,7 +41,6 @@ public class FileHandler {
      *
      * @return Current directory.
      */
-    @SuppressWarnings("unused")
     public String getDirectory() {
         return directory;
     }
