@@ -7,11 +7,8 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
-class TextFileWriter {
-    //TODO: remove from here
-    private static final String valueSeparator = " : ";
-
-    void writeToFile(String filePath, ArrayList<String[]> writableData){
+class TextWriter {
+    protected void writeToFile(String filePath, ArrayList<String[]> writableData){
         try {
             System.out.println("Writing to file at " + filePath);
 

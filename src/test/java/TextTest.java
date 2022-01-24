@@ -7,17 +7,19 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class TextTest {
-
     private static final String
             DIRECTORY = "resources",
             READ_TEST_FILE_NAME = "textReadTest",
             WRITE_TEST_FILE_NAME = "textWriteTest";
 
+    private static FileHandler fileHandler;
+
     @BeforeAll
     static void initialize() {
-        //set common variables
+        fileHandler = new FileHandler(DIRECTORY);
     }
 
     /**
@@ -26,9 +28,9 @@ public class TextTest {
      */
     @Test
     void pathTest() {
-        String dir = "dir", slash = "/", file = "file";
+        String dir = DIRECTORY, slash = "/", file = "file";
         String expected = dir + slash + file;
-        String actual = FileHandler.path(dir, file);
+        String actual = fileHandler.path(file);
         assertEquals(expected, actual, "Not creating file path correctly.");
     }
 
@@ -38,9 +40,10 @@ public class TextTest {
      */
     @Test
     void fileExistenceCheckTest() {
-        //check file existence
-        //TODO: make this test
-        assertEquals(true, false, "File existence check test not working.");
+        String fileName = "emptyFile";
+        assertTrue(
+                fileHandler.checkFileStatus(fileName),
+                "File existence check test not working.");
     }
 
     /**
@@ -51,7 +54,7 @@ public class TextTest {
         String
                 line1 = "row1 : data1",
                 line2 = "row2 : data2",
-                line3 = "row3 : data3a data3b data3c";
+                line3 = "row3 : data3a : data3b : data3c";
 
         ArrayList<String> expected = new ArrayList<>() {{
             add(line1);
@@ -60,7 +63,7 @@ public class TextTest {
         }};
 
         //read text lines from preprepared file
-        ArrayList<String> actual = FileHandler.readLines(FileHandler.path(DIRECTORY, READ_TEST_FILE_NAME));
+        ArrayList<String> actual = fileHandler.text.readLines(READ_TEST_FILE_NAME, fileHandler);
 
         assertEquals(expected, actual,"Not reading lines of text.");
     }
@@ -82,7 +85,7 @@ public class TextTest {
         }};
 
         //convert read text lines to arrays of strings
-        ArrayList<String[]> actual = FileHandler.readSeparatedLines(FileHandler.path(DIRECTORY, READ_TEST_FILE_NAME));;
+        ArrayList<String[]> actual = fileHandler.text.readSeparatedLines(READ_TEST_FILE_NAME, fileHandler);
 
         assertEquals(expected, actual, "Not converting read lines to string arrays.");
     }
@@ -109,7 +112,7 @@ public class TextTest {
         }};
 
         //convert read text lines to map of string arrays
-        HashMap<String, String[]> actual = FileHandler.readStringArrayMap(FileHandler.path(DIRECTORY, READ_TEST_FILE_NAME));;
+        HashMap<String, String[]> actual = fileHandler.text.readStringArrayMap(READ_TEST_FILE_NAME, fileHandler);
 
         assertEquals(expected, actual, "Not converting read lines to map of string arrays.");
     }

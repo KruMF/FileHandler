@@ -5,8 +5,10 @@ import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 
-class ImageReader {
-    Image readSingleImage(String filePath) {
+class ImageHandler {
+    protected ImageHandler() {}
+
+    public Image readSingleImage(String filePath) {
         System.out.println("Loading image from " + filePath);
         if(FileHandler.checkFileStatus(filePath)) {
             File imageFile = new File(filePath);

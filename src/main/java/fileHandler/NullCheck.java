@@ -5,9 +5,10 @@ package fileHandler;
  */
 class NullCheck {
     private static final String DEFAULT_SEPARATOR = " : "; //mind the spaces around the colon
+    private static final String DEFAULT_DIRECTORY = "";
 
     protected static String nullDirectoryCheck(String directory) {
-        return nullStringCheck(directory, "");
+        return nullStringCheck(directory, DEFAULT_DIRECTORY);
     }
 
     protected static String nullSeparatorCheck(String separator) {

@@ -1,59 +1,36 @@
 package fileHandler;
 
-import java.awt.*;
 import java.io.File;
-import java.nio.charset.Charset;
-import java.util.ArrayList;
-import java.util.HashMap;
 
 //TODO: add javadoc
 public class FileHandler {
-    private static final TextFileReader textReader = new TextFileReader();
-    private static final TextFileWriter textWriter = new TextFileWriter();
-    private static final ImageReader imageReader = new ImageReader();
+    protected String directory;
 
-    static final Charset encoding = Charset.forName("Cp1257");
-
-    private String separator;
-    private String directory;
+    public TextHandler text = new TextHandler();
+    public ImageHandler images = new ImageHandler();
 
     /**
-     * Creates a FileHandler with specified directory and default separator.
-     *
-     * @param directory Directory for files.
+     * Default FileHandler constructor with empty string as directory.
+     * Use this constructor with caution.
      */
     @SuppressWarnings("unused")
+    public FileHandler() {
+        this.directory = NullCheck.nullDirectoryCheck(null);
+    }
+
+    /**
+     * Creates a FileHandler with specified directory.
+     *
+     * @param directory Directory for files. (Null - empty string)
+     */
     public FileHandler(String directory) {
-        this.separator = NullCheck.nullSeparatorCheck(null);
         this.directory = NullCheck.nullDirectoryCheck(directory);
-    }
-
-    /**
-     * Creates a FileHandler with specified parameters.
-     *
-     * @param separator Value separator for text files.
-     * @param directory Directory for files.
-     */
-    @SuppressWarnings("unused")
-    public FileHandler(String separator, String directory) {
-        this.separator = NullCheck.nullSeparatorCheck(separator);
-        this.directory = NullCheck.nullDirectoryCheck(directory);
-    }
-
-    /**
-     * Sets the separator.
-     *
-     * @param separator New separator.
-     */
-    @SuppressWarnings("unused")
-    public void setSeparator(String separator) {
-        this.separator = NullCheck.nullSeparatorCheck(separator);
     }
 
     /**
      * Sets the directory.
      *
-     * @param directory New directory.
+     * @param directory New directory. (Null - empty string)
      */
     @SuppressWarnings("unused")
     public void setDirectory(String directory) {
@@ -70,60 +47,38 @@ public class FileHandler {
         return directory;
     }
 
-    //TODO: add javadoc
-    public static String path(String directory, String fileName) {
+    /**
+     * Prefixes directory to the file name for complete path.
+     *
+     * @param fileName Name of the file.
+     *
+     * @return Path of the file.
+     */
+    public String path(String fileName) {
         String slash = "/";
         return directory + slash + fileName;
     }
 
     /**
-     * Check readability of a file.
-     * @param filePath Path for file to read
-     * @return True, if ok. False, if file not found or non-readable.
+     * Check existence and readability of a file.
+     *
+     * @param fileName Name of file to check.
+     *
+     * @return True, if OK. False, if file not found or non-readable.
      */
-    static boolean checkFileStatus(String filePath){
-        File fileToCheck = new File(filePath);
+    public boolean checkFileStatus(String fileName) {
+        if (fileName == null) {
+            System.out.println("Null fileName provided.");
+        } else {
+            File file = new File(path(fileName));
 
-        if (!fileToCheck.exists()) System.out.println("File not found");
-        else if (!fileToCheck.canRead()) System.out.println("File not readable");
-        else return true;
+            if (!file.exists()) {
+                System.out.println("File not found");
+            } else if (!file.canRead()) {
+                System.out.println("File not readable");
+            } else return true;
+        }
 
         return false;
-    }
-
-    /**
-     * Reads lines of text from a file to an ArrayList of strings.
-     *
-     * @param filePath Path of file to read
-     *
-     * @return Read lines as ArrayList of strings
-     */
-    public static ArrayList<String> readLines(String filePath) {
-        //TODO: Finish this
-        return null;
-    }
-
-    //TODO: add javadoc
-    public static ArrayList<String[]> readSeparatedLines(String filePath) {
-        //TODO: Finish this
-        return textReader.read(filePath);
-    }
-
-    //TODO: add javadoc
-    public static HashMap<String, String[]> readStringArrayMap(String filePath) {
-        //TODO: Finish this
-        return null;
-    }
-
-    //TODO: add javadoc
-    public static void writeText(String filePath, ArrayList<String[]> data) {
-        //TODO: Finish this
-        textWriter.writeToFile(filePath, data);
-    }
-
-    //TODO: add javadoc
-    public static Image readImage(String filePath) {
-        //TODO: Finish this
-        return imageReader.readSingleImage(filePath);
     }
 }
