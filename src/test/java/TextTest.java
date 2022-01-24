@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class TextTest {
     private static final String
-            DIRECTORY = "resources",
+            DIRECTORY = "src/test/resources/text",
             READ_TEST_FILE_NAME = "textReadTest",
             WRITE_TEST_FILE_NAME = "textWriteTest";
 
