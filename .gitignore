@@ -1,6 +1,6 @@
-# Ignore this
+# Workspace data
 /.idea/
 
-# temporarily disable all output
-# TODO: add nuances to his
-/target/
+# Output containing potentially sensitive data
+/target/maven-status/
+/target/surefire-reports/
