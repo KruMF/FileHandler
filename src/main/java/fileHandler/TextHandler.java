@@ -88,13 +88,11 @@ public class TextHandler {
     //TODO: add javadoc
     public void writeLines(String fileName, FileHandler fileHandler, ArrayList<String> writableLines) {
         String filePath = fileHandler.path(fileName);
-        //TODO: Finish this
         textWriter.writeToFile(filePath, encoding, writableLines);
     }
 
     //TODO: add javadoc
     public void writeSeparatedLines(String fileName, FileHandler fileHandler, ArrayList<String[]> writableLines) {
-        //TODO: Finish this
         writeLines(fileName, fileHandler, TextConversion.combineLines(separator, writableLines));
     }
 
