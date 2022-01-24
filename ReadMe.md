@@ -15,13 +15,21 @@ Free to use and modify for whatever purposes. No copyrights apply.
 
 <h2>Instructions</h2>
 
-Import with Maven.
+Import the latest version with Maven using JitPack.
 
-<i>Latest working version available at `master` branch.</i>
+Add FileHandler object to your preferred class.
 
-<i>First release coming soon...</i>
+<i>Multiple FileHandler objects with different values possible.</i>
+
+TextConversion class usable as static.
 
 
 <h2>Notes</h2>
 
 Work is under progress, expect changes.
+
+<i>Latest working version available at `master` branch.</i>
+
+<i>Development happening at `develop` branch.</i>
+
+<i>First release coming soon...</i>

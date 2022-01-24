@@ -1,18 +1,82 @@
 package fileHandler;
 
-import java.awt.*;
-import java.util.ArrayList;
+import java.io.File;
 
-public class FileHandler extends FileHandlerSupplement{
-    public static ArrayList<String[]> readText(String filePath){
-        return textReader.read(addCommonPathPrefix(filePath));
+//TODO: add javadoc
+@SuppressWarnings("unused")
+public class FileHandler {
+    protected String directory;
+
+    public TextHandler text = new TextHandler();
+    public ImageHandler images = new ImageHandler();
+
+    /**
+     * Default FileHandler constructor with empty string as directory.
+     * Use this constructor with caution.
+     */
+    public FileHandler() {
+        this.directory = NullCheck.nullDirectoryCheck(null);
     }
 
-    public static void writeText(String filePath, ArrayList<String[]> data){
-        textWriter.writeToFile(addCommonPathPrefix(filePath), data);
+    /**
+     * Creates a FileHandler with specified directory.
+     *
+     * @param directory Directory for files. (Null - empty string)
+     */
+    public FileHandler(String directory) {
+        this.directory = NullCheck.nullDirectoryCheck(directory);
     }
 
-    public static Image readImage(String filePath){
-        return imageReader.readSingleImage(addCommonPathPrefix(filePath));
+    /**
+     * Sets the directory.
+     *
+     * @param directory New directory. (Null - empty string)
+     */
+    public void setDirectory(String directory) {
+        this.directory = NullCheck.nullDirectoryCheck(directory);
+    }
+
+    /**
+     * Gets the current directory.
+     *
+     * @return Current directory.
+     */
+    public String getDirectory() {
+        return directory;
+    }
+
+    /**
+     * Prefixes directory to the file name for complete path.
+     *
+     * @param fileName Name of the file.
+     *
+     * @return Path of the file.
+     */
+    public String path(String fileName) {
+        String slash = "/";
+        return directory + slash + fileName;
+    }
+
+    /**
+     * Check existence and readability of a file.
+     *
+     * @param fileName Name of file to check.
+     *
+     * @return True, if OK. False, if file not found or non-readable.
+     */
+    public boolean checkFileStatus(String fileName) {
+        if (fileName == null) {
+            System.out.println("Null fileName provided.");
+        } else {
+            File file = new File(path(fileName));
+
+            if (!file.exists()) {
+                System.out.println("File not found");
+            } else if (!file.canRead()) {
+                System.out.println("File not readable");
+            } else return true;
+        }
+
+        return false;
     }
 }
