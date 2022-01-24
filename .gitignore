@@ -1,2 +1,6 @@
-# Ignore this
+# Workspace data
 /.idea/
+
+# Output containing potentially sensitive data
+/target/maven-status/
+/target/surefire-reports/
