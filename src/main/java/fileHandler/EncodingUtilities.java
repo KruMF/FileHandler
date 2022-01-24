@@ -12,6 +12,10 @@ public class EncodingUtilities {
         //add new encoding types here
     }
 
+    protected static Charset encodingTypeToCharset() {
+        return encodingTypeToCharset(DEFAULT_ENCODING);
+    }
+
     protected static Charset encodingTypeToCharset(EncodingType encoding) {
         switch (encoding) {
             //check for other encoding types here

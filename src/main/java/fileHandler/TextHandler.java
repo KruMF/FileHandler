@@ -18,7 +18,7 @@ public class TextHandler {
      * Creates a text handler with default parameters.
      */
     protected TextHandler() {
-        encoding = EncodingUtilities.encodingTypeToCharset(null);
+        encoding = EncodingUtilities.encodingTypeToCharset();
         separator = NullCheck.nullSeparatorCheck(null);
 
         textReader = new TextReader();
