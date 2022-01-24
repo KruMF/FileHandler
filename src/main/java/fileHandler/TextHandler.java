@@ -81,13 +81,25 @@ public class TextHandler {
      *
      * @return Read lines as string HashMap. Null if not read.
      */
-    public HashMap<String, String[]> readStringArrayMap(String fileName, FileHandler fileHandler) {
-        return TextConversion.toStringMap(readSeparatedLines(fileName, fileHandler));
+    public HashMap<String, String[]> readStringMap(String fileName, FileHandler fileHandler) {
+        return TextConversion.stringMapFromArrayList(readSeparatedLines(fileName, fileHandler));
     }
 
     //TODO: add javadoc
-    public void writeText(String fileName, ArrayList<String[]> data) {
+    public void writeLines(String fileName, FileHandler fileHandler, ArrayList<String> writableLines) {
+        String filePath = fileHandler.path(fileName);
         //TODO: Finish this
-        textWriter.writeToFile(fileName, data);
+        textWriter.writeToFile(filePath, encoding, writableLines);
+    }
+
+    //TODO: add javadoc
+    public void writeSeparatedLines(String fileName, FileHandler fileHandler, ArrayList<String[]> writableLines) {
+        //TODO: Finish this
+        writeLines(fileName, fileHandler, writableLines);
+    }
+
+    //TODO: add javadoc
+    public void writeStringMap(String fileName, FileHandler fileHandler, HashMap<String, String[]> writableData) {
+        writeSeparatedLines(fileName, fileHandler, TextConversion.arrayListFromStringMap(writableData));
     }
 }

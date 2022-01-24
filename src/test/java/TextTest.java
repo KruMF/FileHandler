@@ -112,7 +112,7 @@ public class TextTest {
         }};
 
         //convert read text lines to map of string arrays
-        HashMap<String, String[]> actual = fileHandler.text.readStringArrayMap(READ_TEST_FILE_NAME, fileHandler);
+        HashMap<String, String[]> actual = fileHandler.text.readStringMap(READ_TEST_FILE_NAME, fileHandler);
 
         assertEquals(expected, actual, "Not converting read lines to map of string arrays.");
     }

@@ -3,6 +3,7 @@ package fileHandler;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 
 public class TextConversion {
     /**
@@ -47,7 +48,7 @@ public class TextConversion {
     }
 
     //TODO: add javadoc
-    public static HashMap<String, String[]> toStringMap(ArrayList<String[]> lines) {
+    public static HashMap<String, String[]> stringMapFromArrayList(ArrayList<String[]> lines) {
         try {
             HashMap<String, String[]> stringMap = new HashMap<>();
             for (String[] line : lines) {
@@ -57,6 +58,7 @@ public class TextConversion {
                     String key = line[0];
                     String[] value;
                     if (line.length == 1) {
+                        // if line contains only key and no value
                         value = null;
                     } else {
                         value = Arrays.copyOfRange(line, 1, line.length - 1);
@@ -69,5 +71,54 @@ public class TextConversion {
             System.out.println("Null lines provided. Unable to convert to Map.");
             return null;
         }
+    }
+
+    //TODO: add javadoc
+    public static ArrayList<String> combineLines(String separator, ArrayList<String[]> separatedLines) {
+        ArrayList<String> combinedLines = new ArrayList<>();
+
+        for (String[] splitLine : separatedLines) {
+            combinedLines.add(combineLine(separator, splitLine));
+        }
+
+        return combinedLines;
+    }
+
+    private static String combineLine(String separator, String[] combinable) {
+        StringBuilder combinedLine = new StringBuilder();
+
+        for (int i = 0; i < combinable.length; i++) {
+            if (i > 0) {
+                //prefixes separator if not first string
+                combinedLine.append(separator);
+            }
+            combinedLine.append(combinable[i]);
+        }
+
+        return combinedLine.toString();
+    }
+
+    //TODO: add javadoc
+    public static ArrayList<String[]> arrayListFromStringMap(HashMap<String, String[]> stringMap) {
+        try {
+            ArrayList<String[]> lines = new ArrayList<>();
+            for (String key : stringMap.keySet()) {
+                String[] value = stringMap.get(key);
+                lines.add(prefixValueWithKey(key, value));
+            }
+            return lines;
+        } catch (NullPointerException e) {
+            System.out.println("Null map provided. Unable to convert.");
+            return null;
+        }
+    }
+
+    private static String[] prefixValueWithKey(String key, String[] value) {
+        String[] line = new String[value.length + 1];
+        line[0] = key;
+        if (value.length > 0) {
+            System.arraycopy(value, 0, line, 1, value.length);
+        }
+        return line;
     }
 }
