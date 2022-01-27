@@ -2,16 +2,29 @@ package fileHandler.dataTypes;
 
 import java.util.ArrayList;
 
+import com.google.inject.internal.Nullable;
+
 //TODO: add javadoc
 @SuppressWarnings("unused")
 public class IOlist {
-    public ArrayList<AbstractImportableExportable> list;
+    public ArrayList<AbstractImportableExportable<?>> list;
 
     public IOlist() {
         list = new ArrayList<>();
     }
 
-    public void add(AbstractImportableExportable object) {
+    public AbstractImportableExportable<?> get(@Nullable String key) {
+        if (key != null) {
+            for (AbstractImportableExportable<?> member : list) {
+                if (member.compareKey(key)) {
+                    return member;
+                }
+            }
+        }
+        return null;
+    }
+
+    public void add(AbstractImportableExportable<?> object) {
         list.add(object);
     }
 
@@ -21,19 +34,15 @@ public class IOlist {
         }
     }
 
-    private void importLine(String[] line) {
-        for (AbstractImportableExportable member : list) {
-            String key = line[0];
-            if (member.compareKey(key)) {
-                member.importLine(line);
-                break;
-            }
+    private void importLine(@Nullable String[] line) {
+        if (line != null && line.length > 0) {
+            get(line[0]).importLine(line);
         }
     }
 
     public ArrayList<String[]> exportLines() {
         ArrayList<String[]> exportable = new ArrayList<>();
-        for (AbstractImportableExportable member : list) {
+        for (AbstractImportableExportable<?> member : list) {
             exportable.add(member.exportLine());
         }
         return exportable;
