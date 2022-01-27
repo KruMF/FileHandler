@@ -4,26 +4,26 @@ import java.awt.*;
 
 //TODO: add javadoc
 @SuppressWarnings("unused")
-public class IOcolor3 extends AbstractImportableExportable{
-    public Color value;
+public class IOcolor3 extends AbstractImportableExportable<Color> {
 
-    public IOcolor3(String key) {
-        super(key);
+    public IOcolor3(String key, Color defaultValue) {
+        super(key, defaultValue);
     }
 
     @Override
-    public String[] valueArray() {
-        return new String[] {
-                String.valueOf(value.getRed()),
-                String.valueOf(value.getGreen()),
-                String.valueOf(value.getBlue())};
-    }
-
-    @Override
-    public void setValue(String[] valueArray) {
-        value = new Color(
+    public void importValueArray(String[] valueArray) {
+        setValue(new Color(
                 Integer.parseInt(valueArray[0]),
                 Integer.parseInt(valueArray[1]),
-                Integer.parseInt(valueArray[2]));
+                Integer.parseInt(valueArray[2])));
+    }
+
+    @Override
+    public String[] exportValueArray() {
+        Color color = getValue();
+        return new String[] {
+                String.valueOf(color.getRed()),
+                String.valueOf(color.getGreen()),
+                String.valueOf(color.getBlue())};
     }
 }

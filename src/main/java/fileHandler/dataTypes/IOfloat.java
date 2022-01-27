@@ -2,21 +2,14 @@ package fileHandler.dataTypes;
 
 //TODO: add javadoc
 @SuppressWarnings("unused")
-public class IOfloat extends AbstractImportableExportable {
-    public float value;
+public class IOfloat extends AbstractImportableExportable<Float> {
 
-    public IOfloat(String key, float value) {
-        super(key);
-        this.value = value;
+    public IOfloat(String key, float defaultValue) {
+        super(key, defaultValue);
     }
 
     @Override
-    public String[] valueArray() {
-        return new String[] {String.valueOf(value)};
-    }
-
-    @Override
-    public void setValue(String[] valueArray) {
-        value = Float.parseFloat(valueArray[0]);
+    public void importValueArray(String[] valueArray) {
+        setValue(Float.parseFloat(valueArray[0]));
     }
 }

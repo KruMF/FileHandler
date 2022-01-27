@@ -2,21 +2,14 @@ package fileHandler.dataTypes;
 
 //TODO: add javadoc
 @SuppressWarnings("unused")
-public class IOstring extends AbstractImportableExportable {
-    public String value;
+public class IOstring extends AbstractImportableExportable<String> {
 
-    public IOstring(String key, String value) {
-        super(key);
-        this.value = value;
+    public IOstring(String key, String defaultValue) {
+        super(key, defaultValue);
     }
 
     @Override
-    public String[] valueArray() {
-        return new String[] {value};
-    }
-
-    @Override
-    public void setValue(String[] valueArray) {
-        value = valueArray[0];
+    public void importValueArray(String[] valueArray) {
+        setValue(valueArray[0]);
     }
 }
