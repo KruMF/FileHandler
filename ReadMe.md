@@ -38,6 +38,9 @@ Simple data types that extend AbstractImportableExportable class:
 * int
 * float
 * string
+* string array
+* 3-parameter color <i>(RGB)</i>
+* 4-parameter color <i>(With alpha, RGBA)</i>
 
 Usage:
 * Refer to `value` parameter to get its value.
