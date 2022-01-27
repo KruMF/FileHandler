@@ -4,17 +4,24 @@ import com.google.inject.internal.Nullable;
 import org.jetbrains.annotations.NotNull;
 
 import java.awt.*;
+import java.lang.reflect.ParameterizedType;
 import java.util.Objects;
 
 //TODO: add javadoc
 public class IEPrimitive<T> implements ImportableExportableInterface {
     private String key;
+
+    private Class<T> type;
+
     private T value;
     private T defaultValue;
 
     //override this to save value
-    public IEPrimitive(@NotNull String key, @NotNull T defaultValue) {
+    public IEPrimitive(Class<T> type, @NotNull String key, @NotNull T defaultValue) {
         setKey(key);
+
+        this.type = type;
+
         setDefaultValue(defaultValue);
         setValue(defaultValue);
     }
@@ -25,6 +32,10 @@ public class IEPrimitive<T> implements ImportableExportableInterface {
 
     public boolean compareKey(@Nullable String key) {
         return this.key.equals(key);
+    }
+
+    private Class<T> getParameterClass() {
+        return type;
     }
 
     private void setDefaultValue(@NotNull T defaultValue) {
@@ -53,14 +64,26 @@ public class IEPrimitive<T> implements ImportableExportableInterface {
 
     @Override
     public void importValueArray(String[] valueArray) {
-        T value = getValue();
-        if (value instanceof Boolean) {
+        Class<T> parameterClass = getParameterClass();
+
+
+        ((ParameterizedType) T).getActualTypeArguments()
+
+        var asd = ((ParameterizedType) value).getClass().getGenericSuperclass();
+
+        T value = this.getValue();
+        String className = value.getClass().getGenericSuperclass().getTypeName();
+        switch (((ParameterizedType) value).getClass().getGenericSuperclass().getTypeName()) {
+            case "boolean" -> {}
+            default -> {}
+        }
+        if (parameterClass == Boolean.class) {
             setValue(Boolean.parseBoolean(valueArray[0]));
 
-        } else if (value instanceof Integer) {
+        } else if (parameterClass == Integer.class) {
             setValue(Integer.parseInt(valueArray[0]));
 
-        } else if (value instanceof Float) {
+        } else if (parameterClass == Float.class) {
             setValue(Float.parseFloat(valueArray[0]));
 
         } else if (value instanceof String) {

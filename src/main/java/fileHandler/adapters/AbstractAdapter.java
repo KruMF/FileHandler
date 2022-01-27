@@ -4,19 +4,10 @@ import fileHandler.FileHandler;
 import fileHandler.dataTypes.IEList;
 
 //TODO: add javadoc
-public abstract class AbstractAdapter {
-    private String directory;
+public abstract class AbstractAdapter extends ChildDirectory {
 
     public AbstractAdapter(String directory) {
-        setDirectory(directory);
-    }
-
-    private void setDirectory(String directory) {
-        this.directory = directory;
-    }
-
-    public String getDirectory(String parentDirectory) {
-        return parentDirectory + directory;
+        super(directory);
     }
 
     public void importMembers(FileHandler fileHandler,
