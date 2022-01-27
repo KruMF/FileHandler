@@ -6,16 +6,16 @@ import com.google.inject.internal.Nullable;
 
 //TODO: add javadoc
 @SuppressWarnings("unused")
-public class IOlist {
-    public ArrayList<AbstractImportableExportable<?>> list;
+public class IEList {
+    public ArrayList<IEPrimitive<?>> list;
 
-    public IOlist() {
+    public IEList() {
         list = new ArrayList<>();
     }
 
-    public AbstractImportableExportable<?> get(@Nullable String key) {
+    public IEPrimitive<?> get(@Nullable String key) {
         if (key != null) {
-            for (AbstractImportableExportable<?> member : list) {
+            for (IEPrimitive<?> member : list) {
                 if (member.compareKey(key)) {
                     return member;
                 }
@@ -24,7 +24,7 @@ public class IOlist {
         return null;
     }
 
-    public void add(AbstractImportableExportable<?> object) {
+    public void add(IEPrimitive<?> object) {
         list.add(object);
     }
 
@@ -42,7 +42,7 @@ public class IOlist {
 
     public ArrayList<String[]> exportLines() {
         ArrayList<String[]> exportable = new ArrayList<>();
-        for (AbstractImportableExportable<?> member : list) {
+        for (IEPrimitive<?> member : list) {
             exportable.add(member.exportLine());
         }
         return exportable;

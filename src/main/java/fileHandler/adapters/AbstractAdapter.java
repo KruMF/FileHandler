@@ -1,7 +1,7 @@
 package fileHandler.adapters;
 
 import fileHandler.FileHandler;
-import fileHandler.dataTypes.IOlist;
+import fileHandler.dataTypes.IEList;
 
 //TODO: add javadoc
 public abstract class AbstractAdapter {
@@ -21,7 +21,7 @@ public abstract class AbstractAdapter {
 
     public void importMembers(FileHandler fileHandler,
                               String parentDirectory, String fileName,
-                              IOlist members) {
+                              IEList members) {
         members.importLines(fileHandler.text.readSeparatedLines(
                 parentDirectory + directory + fileName,
                 fileHandler));
@@ -29,7 +29,7 @@ public abstract class AbstractAdapter {
 
     public void exportMembers(FileHandler fileHandler,
                               String parentDirectory, String fileName,
-                              IOlist members) {
+                              IEList members) {
         fileHandler.text.writeSeparatedLines(
                 parentDirectory + directory + fileName, fileHandler,
                 members.exportLines());

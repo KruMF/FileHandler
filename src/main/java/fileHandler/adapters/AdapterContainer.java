@@ -1,7 +1,7 @@
 package fileHandler.adapters;
 
 import fileHandler.FileHandler;
-import fileHandler.dataTypes.IOlist;
+import fileHandler.dataTypes.IEList;
 
 import java.util.HashMap;
 
@@ -13,7 +13,7 @@ public abstract class AdapterContainer extends AbstractAdapter {
 
     public void importMembers(FileHandler fileHandler,
                               String parentDirectory, String fileName,
-                              HashMap<AbstractAdapter, IOlist> adapterMap) {
+                              HashMap<AbstractAdapter, IEList> adapterMap) {
         for (AbstractAdapter adapter : adapterMap.keySet()) {
             if (adapter instanceof AdapterContainer) {
                 /*((AdapterContainer) adapter).importMembers(
@@ -31,7 +31,7 @@ public abstract class AdapterContainer extends AbstractAdapter {
 
     public void exportMembers(FileHandler fileHandler,
                               String parentDirectory, String fileName,
-                              IOlist members) {
+                              IEList members) {
         //TODO: needs rework - copy-paste from AbstractAdapter
         fileHandler.text.writeSeparatedLines(
                 getDirectory(fileName), fileHandler,
