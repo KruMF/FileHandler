@@ -1,5 +1,10 @@
 package fileHandler.dataTypes;
 
+import com.google.inject.internal.Nullable;
+import org.jetbrains.annotations.NotNull;
+
+import java.util.Objects;
+
 //TODO: add javadoc
 public abstract class AbstractImportableExportable<T> implements ImportableExportableInterface {
     private String key;
@@ -7,38 +12,42 @@ public abstract class AbstractImportableExportable<T> implements ImportableExpor
     private T defaultValue;
 
     //override this to save value
-    public AbstractImportableExportable(String key, T defaultValue) {
+    public AbstractImportableExportable(@NotNull String key, @NotNull T defaultValue) {
         setKey(key);
         setDefaultValue(defaultValue);
+        setValue(defaultValue);
     }
 
-    private void setKey(String key) {
+    private void setKey(@NotNull String key) {
         this.key = key;
     }
 
-    public boolean compareKey(String key) {
+    public boolean compareKey(@Nullable String key) {
         return this.key.equals(key);
     }
 
-    private void setDefaultValue(T defaultValue) {
+    private void setDefaultValue(@NotNull T defaultValue) {
         this.defaultValue = defaultValue;
     }
 
-    public void setValue(T value) {
-        this.value = value;
+    public void setValue(@Nullable T value) {
+        this.value = Objects.requireNonNullElse(value, defaultValue);
     }
 
     public T getValue() {
         return value;
     }
 
-    public void importLine(String[] importableLine) {
-        setKey(importableLine[0]);
+    public void importLine(@Nullable String[] importableLine) {
+        if (importableLine != null) {
+            String key = importableLine[0];
+            if (compareKey(key)) {
+                String[] values = new String[importableLine.length - 1];
+                System.arraycopy(importableLine, 1, values, 0, values.length);
 
-        String[] values = new String[importableLine.length - 1];
-        System.arraycopy(importableLine, 1, values, 0, values.length);
-
-        importValueArray(values);
+                importValueArray(values);
+            }
+        }
     }
 
     public String[] exportLine() {
