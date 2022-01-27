@@ -15,8 +15,13 @@ public abstract class AbstractAdapter {
         this.directory = directory;
     }
 
+    public String getDirectory(String parentDirectory) {
+        return parentDirectory + directory;
+    }
+
     public void importMembers(FileHandler fileHandler,
-                              String parentDirectory, String fileName, IOlist members) {
+                              String parentDirectory, String fileName,
+                              IOlist members) {
         members.importLines(fileHandler.text.readSeparatedLines(
                 parentDirectory + directory + fileName,
                 fileHandler));
