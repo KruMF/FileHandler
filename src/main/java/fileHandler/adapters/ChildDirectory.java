@@ -16,10 +16,11 @@ public abstract class ChildDirectory {
     }
 
     public String getDirectory(@Nullable String parentDirectory) {
+        String slash = "/";
         if (parentDirectory == null || parentDirectory.equals("")) {
-            return directory;
+            return directory + slash;
         } else {
-            return parentDirectory + "/" + directory;
+            return parentDirectory + slash + directory + slash;
         }
     }
 }

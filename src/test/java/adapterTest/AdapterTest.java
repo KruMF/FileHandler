@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 //TODO: finish this and add javadoc
 public class AdapterTest {
-    private static final String DIRECTORY = "src/test/resources/text";
+    private static final String DIRECTORY = "src/test/resources/adapterTest";
     private static FileHandler fileHandler;
 
     private static PrimitivesDataClass primitives;
@@ -24,8 +24,8 @@ public class AdapterTest {
     }
 
     private static void exportDefaultValues() {
-        primitives.exportData(fileHandler, DIRECTORY);
-        arrays.exportData(fileHandler, DIRECTORY);
+        primitives.exportData(fileHandler, "");
+        arrays.exportData(fileHandler, "");
     }
 
     @Test
