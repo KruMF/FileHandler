@@ -1,7 +1,7 @@
 package fileHandler.adapters;
 
 //TODO: add javadoc
-public class ChildDirectory {
+public abstract class ChildDirectory {
     private String directory;
 
     public ChildDirectory(String directory) {

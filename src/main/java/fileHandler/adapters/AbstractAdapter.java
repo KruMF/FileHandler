@@ -1,11 +1,12 @@
 package fileHandler.adapters;
 
-import com.google.inject.internal.Nullable;
 import fileHandler.FileHandler;
 import fileHandler.dataTypes.IEList;
 
+import com.google.inject.internal.Nullable;
+
 //TODO: add javadoc
-public abstract class AbstractAdapter extends ChildDirectory {
+public abstract class AbstractAdapter extends ChildDirectory implements AdapterInterface {
 
     public AbstractAdapter(String directory) {
         super(directory);
