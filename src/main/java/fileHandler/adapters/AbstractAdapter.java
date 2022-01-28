@@ -1,42 +1,34 @@
 package fileHandler.adapters;
 
 import fileHandler.FileHandler;
-import fileHandler.dataTypes.IEList;
+
+import java.util.ArrayList;
 
 import com.google.inject.internal.Nullable;
+import org.jetbrains.annotations.NotNull;
 
 //TODO: add javadoc
 public abstract class AbstractAdapter extends ChildDirectory implements AdapterInterface {
+    private String fileName;
 
-    public AbstractAdapter(String directory) {
+    public AbstractAdapter(@NotNull String directory, @NotNull String fileName) {
         super(directory);
+        setFileName(fileName);
     }
 
-    public void importMembers(FileHandler fileHandler,
-                              String parentDirectory, String fileName,
-                              IEList members) {
-        members.importLines(fileHandler.text.readSeparatedLines(
-                parentDirectory + directory + fileName,
-                fileHandler));
+    private void setFileName(@NotNull String fileName) {
+        this.fileName = fileName;
     }
 
-    public void exportMembers(FileHandler fileHandler,
-                              String parentDirectory, String fileName,
-                              IEList members) {
-        fileHandler.text.writeSeparatedLines(
-                parentDirectory + directory + fileName, fileHandler,
-                members.exportLines());
+    public String getFilePath(@Nullable String parentDirectory) {
+        return getDirectory(parentDirectory) + fileName;
     }
 
-    public void importLine(@Nullable String[] importableLine) {
-        if (importableLine != null) {
-            String key = importableLine[0];
-            if (compareKey(key)) {
-                String[] values = new String[importableLine.length - 1];
-                System.arraycopy(importableLine, 1, values, 0, values.length);
+    public ArrayList<String[]> importLines(@NotNull FileHandler fileHandler, @Nullable String parentDirectory) {
+        return fileHandler.text.readSeparatedLines(getFilePath(parentDirectory), fileHandler);
+    }
 
-                importValueArray(values);
-            }
-        }
+    public void exportData(@NotNull FileHandler fileHandler, @Nullable String parentDirectory) {
+        fileHandler.text.writeSeparatedLines(getFilePath(parentDirectory), fileHandler, exportValues());
     }
 }
