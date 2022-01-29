@@ -1,9 +1,7 @@
 package dataTypeTest;
 
-import fileHandler.dataTypes.primitives.IEBoolean;
-import fileHandler.dataTypes.primitives.IEInteger;
-import fileHandler.dataTypes.primitives.IEFloat;
-import fileHandler.dataTypes.primitives.IEString;
+import fileHandler.dataTypes.IEPrimitive;
+import fileHandler.dataTypes.primitives.*;
 
 import com.google.inject.internal.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -76,10 +74,21 @@ public class PrimitivesTest {
 
     @Test
     void valueParseTest() {
-        assertTrue(checkValueParse_Boolean(), valueParseTest_errorMessage("IEBoolean"));
-        assertTrue(checkValueParse_Integer(), valueParseTest_errorMessage("IEInteger"));
-        assertTrue(checkValueParse_Float(), valueParseTest_errorMessage("IEFloat"));
-        assertTrue(checkValueParse_String(), valueParseTest_errorMessage("IEString"));
+        assertTrue(
+                checkValueParse(var_boolean, String.valueOf(BOOLEAN_TEST_VALUE)),
+                valueParseTest_errorMessage("IEBoolean"));
+
+        assertTrue(
+                checkValueParse(var_integer, String.valueOf(INTEGER_TEST_VALUE)),
+                valueParseTest_errorMessage("IEInteger"));
+
+        assertTrue(
+                checkValueParse(var_float, String.valueOf(FLOAT_TEST_VALUE)),
+                valueParseTest_errorMessage("IEFloat"));
+
+        assertTrue(
+                checkValueParse(var_string, STRING_TEST_VALUE),
+                valueParseTest_errorMessage("IEString"));
     }
 
     private String valueParseTest_errorMessage(@NotNull String typeName) {
@@ -88,23 +97,15 @@ public class PrimitivesTest {
         return prefix + typeName + appendix;
     }
 
-    private String[] prepareExpectedValueArray_Boolean() {
-        return new String[] {String.valueOf(BOOLEAN_TEST_VALUE)};
+    private boolean checkValueParse(@NotNull IEPrimitive object, @NotNull String expectedString) {
+        String[] expected = new String[] {expectedString};
+        object.parseStringArrayToValue(expected);
+        String[] actual = object.parseValueToStringArray();
+
+        return compareStringArrays(expected, actual);
     }
 
-    private String[] prepareExpectedValueArray_Integer() {
-        return new String[] {String.valueOf(INTEGER_TEST_VALUE)};
-    }
-
-    private String[] prepareExpectedValueArray_Float() {
-        return new String[] {String.valueOf(FLOAT_TEST_VALUE)};
-    }
-
-    private String[] prepareExpectedValueArray_String() {
-        return new String[] {STRING_TEST_VALUE};
-    }
-
-    private boolean checkValueParse(@Nullable String[] expected, @Nullable String[] actual) {
+    private boolean compareStringArrays(@Nullable String[] expected, @Nullable String[] actual) {
         if (expected == null || actual == null
                 || expected.length <= 0
                 || actual.length != expected.length) {
@@ -118,37 +119,5 @@ public class PrimitivesTest {
         }
 
         return true;
-    }
-
-    private boolean checkValueParse_Boolean() {
-        String[] expected = prepareExpectedValueArray_Boolean();
-        var_boolean.parseStringArrayToValue(expected);
-        String[] actual = var_boolean.parseValueToStringArray();
-
-        return checkValueParse(expected, actual);
-    }
-
-    private boolean checkValueParse_Integer() {
-        String[] expected = prepareExpectedValueArray_Integer();
-        var_integer.parseStringArrayToValue(expected);
-        String[] actual = var_integer.parseValueToStringArray();
-
-        return checkValueParse(expected, actual);
-    }
-
-    private boolean checkValueParse_Float() {
-        String[] expected = prepareExpectedValueArray_Float();
-        var_float.parseStringArrayToValue(expected);
-        String[] actual = var_float.parseValueToStringArray();
-
-        return checkValueParse(expected, actual);
-    }
-
-    private boolean checkValueParse_String() {
-        String[] expected = prepareExpectedValueArray_String();
-        var_string.parseStringArrayToValue(expected);
-        String[] actual = var_string.parseValueToStringArray();
-
-        return checkValueParse(expected, actual);
     }
 }
