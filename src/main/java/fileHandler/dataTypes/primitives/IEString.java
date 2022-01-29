@@ -7,6 +7,7 @@ import java.util.Objects;
 import com.google.inject.internal.Nullable;
 import org.jetbrains.annotations.NotNull;
 
+//TODO: add javadoc
 public class IEString extends IEPrimitive {
     private String defaultValue;
     private String value;

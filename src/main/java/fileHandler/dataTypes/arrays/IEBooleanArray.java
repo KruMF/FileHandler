@@ -7,6 +7,7 @@ import java.util.Objects;
 import com.google.inject.internal.Nullable;
 import org.jetbrains.annotations.NotNull;
 
+//TODO: add javadoc
 public class IEBooleanArray extends IEPrimitive {
     private boolean[] defaultValue;
     private boolean[] value;
