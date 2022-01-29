@@ -1,14 +1,16 @@
 package dataTypeTest;
 
+import fileHandler.dataTypes.IEPrimitive;
 import fileHandler.dataTypes.arrays.*;
 
 import org.jetbrains.annotations.NotNull;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-//TODO: finish this and add javadoc
+//TODO: add javadoc
 public class ArraysTest {
     private static final String
             BOOLEANS_KEY = "Booleans",
@@ -46,24 +48,90 @@ public class ArraysTest {
 
     @Test
     void defaultValuesTest() {
-        assertEquals(
+        assertArrayEquals(
                 BOOLEANS_DEFAULT_VALUE, var_booleans.getValue(),
                 DataTypeTestHelper.defaultValueTest_errorMessage("IEBooleanArray"));
 
-        assertEquals(
+        assertArrayEquals(
                 INTEGERS_DEFAULT_VALUE, var_integers.getValue(),
                 DataTypeTestHelper.defaultValueTest_errorMessage("IEIntegerArray"));
 
-        assertEquals(
+        assertArrayEquals(
                 FLOATS_DEFAULT_VALUE, var_floats.getValue(),
                 DataTypeTestHelper.defaultValueTest_errorMessage("IEFloatArray"));
 
-        assertEquals(
+        assertArrayEquals(
                 DOUBLES_DEFAULT_VALUE, var_doubles.getValue(),
                 DataTypeTestHelper.defaultValueTest_errorMessage("IEDoubleArray"));
 
-        assertEquals(
+        assertArrayEquals(
                 STRINGS_DEFAULT_VALUE, var_strings.getValue(),
                 DataTypeTestHelper.defaultValueTest_errorMessage("IEStringArray"));
+    }
+
+    @Test
+    void valueParseTest() {
+        assertTrue(
+                checkValueParse(var_booleans, expectedStringArray_Boolean(BOOLEANS_TEST_VALUE)),
+                DataTypeTestHelper.valueParseTest_errorMessage("IEBoolean"));
+
+        assertTrue(
+                checkValueParse(var_integers, expectedStringArray_Integer(INTEGERS_TEST_VALUE)),
+                DataTypeTestHelper.valueParseTest_errorMessage("IEInteger"));
+
+        assertTrue(
+                checkValueParse(var_floats, expectedStringArray_Float(FLOATS_TEST_VALUE)),
+                DataTypeTestHelper.valueParseTest_errorMessage("IEFloat"));
+
+        assertTrue(
+                checkValueParse(var_doubles, expectedStringArray_Double(DOUBLES_TEST_VALUE)),
+                DataTypeTestHelper.valueParseTest_errorMessage("IEDouble"));
+
+        assertTrue(
+                checkValueParse(var_strings, expectedStringArray_String(STRINGS_TEST_VALUE)),
+                DataTypeTestHelper.valueParseTest_errorMessage("IEString"));
+    }
+
+    private boolean checkValueParse(@NotNull IEPrimitive object, @NotNull String[] expectedStringArray) {
+        object.parseStringArrayToValue(expectedStringArray);
+        return DataTypeTestHelper.compareStringArrays(
+                expectedStringArray,
+                object.parseValueToStringArray());
+    }
+
+    private String[] expectedStringArray_Boolean(boolean[] booleanArray) {
+        String[] returnable = new String[booleanArray.length];
+        for (int i = 0; i < booleanArray.length; i++) {
+            returnable[i] = String.valueOf(booleanArray[i]);
+        }
+        return returnable;
+    }
+
+    private String[] expectedStringArray_Integer(int[] integerArray) {
+        String[] returnable = new String[integerArray.length];
+        for (int i = 0; i < integerArray.length; i++) {
+            returnable[i] = String.valueOf(integerArray[i]);
+        }
+        return returnable;
+    }
+
+    private String[] expectedStringArray_Float(float[] floatArray) {
+        String[] returnable = new String[floatArray.length];
+        for (int i = 0; i < floatArray.length; i++) {
+            returnable[i] = String.valueOf(floatArray[i]);
+        }
+        return returnable;
+    }
+
+    private String[] expectedStringArray_Double(double[] doubleArray) {
+        String[] returnable = new String[doubleArray.length];
+        for (int i = 0; i < doubleArray.length; i++) {
+            returnable[i] = String.valueOf(doubleArray[i]);
+        }
+        return returnable;
+    }
+
+    private String[] expectedStringArray_String(String[] stringArray) {
+        return stringArray;
     }
 }

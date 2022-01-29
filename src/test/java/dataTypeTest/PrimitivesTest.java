@@ -3,7 +3,6 @@ package dataTypeTest;
 import fileHandler.dataTypes.IEPrimitive;
 import fileHandler.dataTypes.primitives.*;
 
-import com.google.inject.internal.Nullable;
 import org.jetbrains.annotations.NotNull;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -96,24 +95,9 @@ public class PrimitivesTest {
     private boolean checkValueParse(@NotNull IEPrimitive object, @NotNull String expectedString) {
         String[] expected = new String[] {expectedString};
         object.parseStringArrayToValue(expected);
-        String[] actual = object.parseValueToStringArray();
 
-        return compareStringArrays(expected, actual);
-    }
-
-    private boolean compareStringArrays(@Nullable String[] expected, @Nullable String[] actual) {
-        if (expected == null || actual == null
-                || expected.length <= 0
-                || actual.length != expected.length) {
-            return false;
-        }
-
-        for (int i = 0; i < expected.length; i++) {
-            if (!actual[i].equals(expected[i])) {
-                return false;
-            }
-        }
-
-        return true;
+        return DataTypeTestHelper.compareStringArrays(
+                expected,
+                object.parseValueToStringArray());
     }
 }

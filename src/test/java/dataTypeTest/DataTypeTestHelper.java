@@ -50,4 +50,20 @@ abstract class DataTypeTestHelper {
                 typeName,
                 " value import or export.");
     }
+
+    static boolean compareStringArrays(@Nullable String[] expected, @Nullable String[] actual) {
+        if (expected == null || actual == null
+                || expected.length <= 0
+                || actual.length != expected.length) {
+            return false;
+        }
+
+        for (int i = 0; i < expected.length; i++) {
+            if (!actual[i].equals(expected[i])) {
+                return false;
+            }
+        }
+
+        return true;
+    }
 }
