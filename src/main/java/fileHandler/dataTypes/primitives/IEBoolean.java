@@ -11,13 +11,13 @@ public class IEBoolean extends IEPrimitive {
     private boolean defaultValue;
     private boolean value;
 
-    public IEBoolean(@NotNull String key, @NotNull boolean defaultValue) {
+    public IEBoolean(@NotNull String key, boolean defaultValue) {
         super(key);
         setDefaultValue(defaultValue);
         resetValue();
     }
 
-    private void setDefaultValue(@NotNull boolean defaultValue) {
+    private void setDefaultValue(boolean defaultValue) {
         this.defaultValue = defaultValue;
     }
 

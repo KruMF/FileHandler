@@ -11,13 +11,13 @@ public class IEFloat extends IEPrimitive {
     private float defaultValue;
     private float value;
 
-    public IEFloat(@NotNull String key, @NotNull float defaultValue) {
+    public IEFloat(@NotNull String key, float defaultValue) {
         super(key);
         setDefaultValue(defaultValue);
         resetValue();
     }
 
-    private void setDefaultValue(@NotNull float defaultValue) {
+    private void setDefaultValue(float defaultValue) {
         this.defaultValue = defaultValue;
     }
 

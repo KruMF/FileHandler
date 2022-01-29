@@ -11,13 +11,13 @@ public class IEInteger extends IEPrimitive {
     private int defaultValue;
     private int value;
 
-    public IEInteger(@NotNull String key, @NotNull int defaultValue) {
+    public IEInteger(@NotNull String key, int defaultValue) {
         super(key);
         setDefaultValue(defaultValue);
         resetValue();
     }
 
-    private void setDefaultValue(@NotNull int defaultValue) {
+    private void setDefaultValue(int defaultValue) {
         this.defaultValue = defaultValue;
     }
 
