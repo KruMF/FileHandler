@@ -1,10 +1,5 @@
 package fileHandler.adapters;
 
-import fileHandler.FileHandler;
-import fileHandler.dataTypes.IEList;
-
-import java.util.HashMap;
-
 //TODO: needs more work and javadoc
 public abstract class AdapterContainer /*extends AbstractAdapter*/ {
 //    public AdapterContainer(String directory) {
