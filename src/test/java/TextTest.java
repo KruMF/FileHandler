@@ -1,9 +1,9 @@
 import fileHandler.FileHandler;
+import fileHandler.TextConversion;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import fileHandler.TextConversion;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -63,7 +63,7 @@ public class TextTest {
         //read text lines from preprepared file
         ArrayList<String> actual = fileHandler.text.readLines(READ_TEST_FILE_NAME, fileHandler);
 
-        assertEquals(expected, actual,"Not reading lines of text.");
+        assertLinesMatch(expected, actual,"Not reading lines of text.");
     }
 
     /**

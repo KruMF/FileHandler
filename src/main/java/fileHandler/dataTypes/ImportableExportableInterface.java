@@ -3,9 +3,11 @@ package fileHandler.dataTypes;
 //TODO: add javadoc
 public interface ImportableExportableInterface {
 
-    //override this to get actual value
-    String[] valueArray();
+    void resetValue();
 
     //override this to set actual value
-    void setValue(String[] valueArray);
+    void parseStringArrayToValue(String[] valueArray);
+
+    //override this to get actual value
+    String[] parseValueToStringArray();
 }
