@@ -57,10 +57,10 @@ public class PrimitivesDataClass extends AbstractAdapter {
     @Override
     public ArrayList<String[]> exportValues() {
         return new ArrayList<>() {{
-            add(var_boolean.combineKeyAndValue(var_boolean.parseValueToStringArray()));
-            add(var_integer.combineKeyAndValue(var_integer.parseValueToStringArray()));
-            add(var_float.combineKeyAndValue(var_float.parseValueToStringArray()));
-            add(var_string.combineKeyAndValue(var_string.parseValueToStringArray()));
+            add(var_boolean.combineKeyAndValue());
+            add(var_integer.combineKeyAndValue());
+            add(var_float.combineKeyAndValue());
+            add(var_string.combineKeyAndValue());
         }};
     }
 }

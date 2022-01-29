@@ -21,6 +21,7 @@ public class IEStringArray extends IEPrimitive {
         this.defaultValue = defaultValue;
     }
 
+    @Override
     public void resetValue() {
         setValue(defaultValue);
     }

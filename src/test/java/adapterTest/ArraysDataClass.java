@@ -56,10 +56,10 @@ public class ArraysDataClass extends AbstractAdapter {
     @Override
     public ArrayList<String[]> exportValues() {
         return new ArrayList<>() {{
-            add(var_booleanArray.combineKeyAndValue(var_booleanArray.parseValueToStringArray()));
-            add(var_integerArray.combineKeyAndValue(var_integerArray.parseValueToStringArray()));
-            add(var_floatArray.combineKeyAndValue(var_floatArray.parseValueToStringArray()));
-            add(var_stringArray.combineKeyAndValue(var_stringArray.parseValueToStringArray()));
+            add(var_booleanArray.combineKeyAndValue());
+            add(var_integerArray.combineKeyAndValue());
+            add(var_floatArray.combineKeyAndValue());
+            add(var_stringArray.combineKeyAndValue());
         }};
     }
 }

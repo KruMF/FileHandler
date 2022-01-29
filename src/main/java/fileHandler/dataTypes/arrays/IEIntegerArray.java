@@ -21,6 +21,7 @@ public class IEIntegerArray extends IEPrimitive {
         this.defaultValue = defaultValue;
     }
 
+    @Override
     public void resetValue() {
         setValue(defaultValue);
     }

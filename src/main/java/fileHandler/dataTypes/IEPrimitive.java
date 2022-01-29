@@ -20,7 +20,8 @@ public abstract class IEPrimitive implements ImportableExportableInterface {
         return this.key.equals(key);
     }
 
-    public String[] combineKeyAndValue(String[] value) {
+    public String[] combineKeyAndValue() {
+        String[] value = parseValueToStringArray();
         String[] returnable = new String[value.length + 1];
         returnable[0] = key;
         System.arraycopy(value, 0, returnable, 1, value.length);
