@@ -11,7 +11,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 
-public class ArraysDataClass extends AbstractAdapter {
+class ArraysDataClass extends AbstractAdapter {
     private static final String
             ADAPTER_DIRECTORY = "adapterTest",
             ADAPTER_FILE_NAME = "arrays";

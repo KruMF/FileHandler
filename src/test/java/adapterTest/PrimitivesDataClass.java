@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import com.google.inject.internal.Nullable;
 import org.jetbrains.annotations.NotNull;
 
-public class PrimitivesDataClass extends AbstractAdapter {
+class PrimitivesDataClass extends AbstractAdapter {
     private static final String
             ADAPTER_DIRECTORY = "adapterTest",
             ADAPTER_FILE_NAME = "primitives";
