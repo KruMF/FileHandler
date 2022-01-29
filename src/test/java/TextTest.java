@@ -1,9 +1,9 @@
 import fileHandler.FileHandler;
+import fileHandler.TextConversion;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import fileHandler.TextConversion;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
