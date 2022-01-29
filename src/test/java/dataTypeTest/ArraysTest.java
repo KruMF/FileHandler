@@ -1,10 +1,12 @@
+package dataTypeTest;
+
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 //TODO: finish this and add javadoc
-public class DataTypeTest {
+public class ArraysTest {
 
     @BeforeAll
     static void initialize() {
@@ -12,8 +14,8 @@ public class DataTypeTest {
     }
 
     @Test
-    void testPrimitives() {
+    void testArrays() {
         //TODO: finish this
-        assertEquals(true, false, "primitive dataType test not finished yet");
+        assertEquals(true, false, "dataType arrays test not finished yet");
     }
 }
