@@ -49,37 +49,31 @@ public class PrimitivesTest {
 
     @Test
     void defaultValuesTest() {
-        assertTrue(compareDefaultValue_Boolean(), defaultValueTest_errorMessage("IEBoolean"));
-        assertTrue(compareDefaultValue_Integer(), defaultValueTest_errorMessage("IEInteger"));
-        assertTrue(compareDefaultValue_Float(), defaultValueTest_errorMessage("IEFloat"));
-        assertTrue(compareDefaultValue_Double(), defaultValueTest_errorMessage("IEDouble"));
-        assertTrue(compareDefaultValue_String(), defaultValueTest_errorMessage("IEString"));
+        assertEquals(
+                BOOLEAN_DEFAULT_VALUE, var_boolean.getValue(),
+                defaultValueTest_errorMessage("IEBoolean"));
+
+        assertEquals(
+                INTEGER_DEFAULT_VALUE, var_integer.getValue(),
+                defaultValueTest_errorMessage("IEInteger"));
+
+        assertEquals(
+                FLOAT_DEFAULT_VALUE, var_float.getValue(),
+                defaultValueTest_errorMessage("IEFloat"));
+
+        assertEquals(
+                DOUBLE_DEFAULT_VALUE, var_double.getValue(),
+                defaultValueTest_errorMessage("IEDouble"));
+
+        assertEquals(
+                STRING_DEFAULT_VALUE, var_string.getValue(),
+                defaultValueTest_errorMessage("IEString"));
     }
 
     private String defaultValueTest_errorMessage(@NotNull String typeName) {
         String prefix = "Problems with ";
         String appendix = " creation or default value assignment.";
         return prefix + typeName + appendix;
-    }
-
-    private boolean compareDefaultValue_Boolean() {
-        return var_boolean.getValue() == BOOLEAN_DEFAULT_VALUE;
-    }
-
-    private boolean compareDefaultValue_Integer() {
-        return var_integer.getValue() == INTEGER_DEFAULT_VALUE;
-    }
-
-    private boolean compareDefaultValue_Float() {
-        return var_float.getValue() == FLOAT_DEFAULT_VALUE;
-    }
-
-    private boolean compareDefaultValue_Double() {
-        return var_double.getValue() == DOUBLE_DEFAULT_VALUE;
-    }
-
-    private boolean compareDefaultValue_String() {
-        return var_string.getValue().equals(STRING_DEFAULT_VALUE);
     }
 
     @Test
