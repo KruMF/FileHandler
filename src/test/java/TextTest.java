@@ -63,7 +63,7 @@ public class TextTest {
         //read text lines from preprepared file
         ArrayList<String> actual = fileHandler.text.readLines(READ_TEST_FILE_NAME, fileHandler);
 
-        assertEquals(expected, actual,"Not reading lines of text.");
+        assertLinesMatch(expected, actual,"Not reading lines of text.");
     }
 
     /**
