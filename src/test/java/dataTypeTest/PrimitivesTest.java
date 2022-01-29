@@ -51,58 +51,46 @@ public class PrimitivesTest {
     void defaultValuesTest() {
         assertEquals(
                 BOOLEAN_DEFAULT_VALUE, var_boolean.getValue(),
-                defaultValueTest_errorMessage("IEBoolean"));
+                DataTypeTestHelper.defaultValueTest_errorMessage("IEBoolean"));
 
         assertEquals(
                 INTEGER_DEFAULT_VALUE, var_integer.getValue(),
-                defaultValueTest_errorMessage("IEInteger"));
+                DataTypeTestHelper.defaultValueTest_errorMessage("IEInteger"));
 
         assertEquals(
                 FLOAT_DEFAULT_VALUE, var_float.getValue(),
-                defaultValueTest_errorMessage("IEFloat"));
+                DataTypeTestHelper.defaultValueTest_errorMessage("IEFloat"));
 
         assertEquals(
                 DOUBLE_DEFAULT_VALUE, var_double.getValue(),
-                defaultValueTest_errorMessage("IEDouble"));
+                DataTypeTestHelper.defaultValueTest_errorMessage("IEDouble"));
 
         assertEquals(
                 STRING_DEFAULT_VALUE, var_string.getValue(),
-                defaultValueTest_errorMessage("IEString"));
-    }
-
-    private String defaultValueTest_errorMessage(@NotNull String typeName) {
-        String prefix = "Problems with ";
-        String appendix = " creation or default value assignment.";
-        return prefix + typeName + appendix;
+                DataTypeTestHelper.defaultValueTest_errorMessage("IEString"));
     }
 
     @Test
     void valueParseTest() {
         assertTrue(
                 checkValueParse(var_boolean, String.valueOf(BOOLEAN_TEST_VALUE)),
-                valueParseTest_errorMessage("IEBoolean"));
+                DataTypeTestHelper.valueParseTest_errorMessage("IEBoolean"));
 
         assertTrue(
                 checkValueParse(var_integer, String.valueOf(INTEGER_TEST_VALUE)),
-                valueParseTest_errorMessage("IEInteger"));
+                DataTypeTestHelper.valueParseTest_errorMessage("IEInteger"));
 
         assertTrue(
                 checkValueParse(var_float, String.valueOf(FLOAT_TEST_VALUE)),
-                valueParseTest_errorMessage("IEFloat"));
+                DataTypeTestHelper.valueParseTest_errorMessage("IEFloat"));
 
         assertTrue(
                 checkValueParse(var_double, String.valueOf(DOUBLE_TEST_VALUE)),
-                valueParseTest_errorMessage("IEDouble"));
+                DataTypeTestHelper.valueParseTest_errorMessage("IEDouble"));
 
         assertTrue(
                 checkValueParse(var_string, STRING_TEST_VALUE),
-                valueParseTest_errorMessage("IEString"));
-    }
-
-    private String valueParseTest_errorMessage(@NotNull String typeName) {
-        String prefix = "Problems with ";
-        String appendix = " value import or export.";
-        return prefix + typeName + appendix;
+                DataTypeTestHelper.valueParseTest_errorMessage("IEString"));
     }
 
     private boolean checkValueParse(@NotNull IEPrimitive object, @NotNull String expectedString) {

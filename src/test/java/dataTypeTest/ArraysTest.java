@@ -2,6 +2,7 @@ package dataTypeTest;
 
 import fileHandler.dataTypes.arrays.*;
 
+import org.jetbrains.annotations.NotNull;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -44,8 +45,25 @@ public class ArraysTest {
     }
 
     @Test
-    void testArrays() {
-        //TODO: finish this
-        assertEquals(true, false, "dataType arrays test not finished yet");
+    void defaultValuesTest() {
+        assertEquals(
+                BOOLEANS_DEFAULT_VALUE, var_booleans.getValue(),
+                DataTypeTestHelper.defaultValueTest_errorMessage("IEBooleanArray"));
+
+        assertEquals(
+                INTEGERS_DEFAULT_VALUE, var_integers.getValue(),
+                DataTypeTestHelper.defaultValueTest_errorMessage("IEIntegerArray"));
+
+        assertEquals(
+                FLOATS_DEFAULT_VALUE, var_floats.getValue(),
+                DataTypeTestHelper.defaultValueTest_errorMessage("IEFloatArray"));
+
+        assertEquals(
+                DOUBLES_DEFAULT_VALUE, var_doubles.getValue(),
+                DataTypeTestHelper.defaultValueTest_errorMessage("IEDoubleArray"));
+
+        assertEquals(
+                STRINGS_DEFAULT_VALUE, var_strings.getValue(),
+                DataTypeTestHelper.defaultValueTest_errorMessage("IEStringArray"));
     }
 }
