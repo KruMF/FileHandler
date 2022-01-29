@@ -54,5 +54,4 @@ public class IEDoubleArray extends IEPrimitive {
         }
         return returnable;
     }
-
 }
