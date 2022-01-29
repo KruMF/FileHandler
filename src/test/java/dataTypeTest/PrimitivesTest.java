@@ -17,21 +17,25 @@ public class PrimitivesTest {
             BOOLEAN_KEY = "Boolean",
             INTEGER_KEY = "Integer",
             FLOAT_KEY = "Float",
+            DOUBLE_KEY = "Double",
             STRING_KEY = "String";
 
     private static final boolean BOOLEAN_DEFAULT_VALUE = false;
     private static final int INTEGER_DEFAULT_VALUE = 100;
     private static final float FLOAT_DEFAULT_VALUE = 10.5f;
+    private static final double DOUBLE_DEFAULT_VALUE = 12.5;
     private static final String STRING_DEFAULT_VALUE = "A string of text";
 
     private static final boolean BOOLEAN_TEST_VALUE = true;
     private static final int INTEGER_TEST_VALUE = 123;
     private static final float FLOAT_TEST_VALUE = 22.345f;
+    private static final double DOUBLE_TEST_VALUE = 123.45;
     private static final String STRING_TEST_VALUE = "A changed string of text";
 
     static IEBoolean var_boolean;
     static IEInteger var_integer;
     static IEFloat var_float;
+    static IEDouble var_double;
     static IEString var_string;
 
     @BeforeEach
@@ -39,6 +43,7 @@ public class PrimitivesTest {
         var_boolean = new IEBoolean(BOOLEAN_KEY, BOOLEAN_DEFAULT_VALUE);
         var_integer = new IEInteger(INTEGER_KEY, INTEGER_DEFAULT_VALUE);
         var_float = new IEFloat(FLOAT_KEY, FLOAT_DEFAULT_VALUE);
+        var_double = new IEDouble(DOUBLE_KEY, DOUBLE_DEFAULT_VALUE);
         var_string = new IEString(STRING_KEY, STRING_DEFAULT_VALUE);
     }
 
@@ -47,6 +52,7 @@ public class PrimitivesTest {
         assertTrue(compareDefaultValue_Boolean(), defaultValueTest_errorMessage("IEBoolean"));
         assertTrue(compareDefaultValue_Integer(), defaultValueTest_errorMessage("IEInteger"));
         assertTrue(compareDefaultValue_Float(), defaultValueTest_errorMessage("IEFloat"));
+        assertTrue(compareDefaultValue_Double(), defaultValueTest_errorMessage("IEDouble"));
         assertTrue(compareDefaultValue_String(), defaultValueTest_errorMessage("IEString"));
     }
 
@@ -68,6 +74,10 @@ public class PrimitivesTest {
         return var_float.getValue() == FLOAT_DEFAULT_VALUE;
     }
 
+    private boolean compareDefaultValue_Double() {
+        return var_double.getValue() == DOUBLE_DEFAULT_VALUE;
+    }
+
     private boolean compareDefaultValue_String() {
         return var_string.getValue().equals(STRING_DEFAULT_VALUE);
     }
@@ -85,6 +95,10 @@ public class PrimitivesTest {
         assertTrue(
                 checkValueParse(var_float, String.valueOf(FLOAT_TEST_VALUE)),
                 valueParseTest_errorMessage("IEFloat"));
+
+        assertTrue(
+                checkValueParse(var_double, String.valueOf(DOUBLE_TEST_VALUE)),
+                valueParseTest_errorMessage("IEDouble"));
 
         assertTrue(
                 checkValueParse(var_string, STRING_TEST_VALUE),
