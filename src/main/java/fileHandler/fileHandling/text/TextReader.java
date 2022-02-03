@@ -1,9 +1,9 @@
-package fileHandler;
+package fileHandler.fileHandling.text;
 
+import java.util.ArrayList;
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.file.Path;
-import java.util.ArrayList;
 
 import static java.nio.file.Files.readAllLines;
 

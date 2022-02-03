@@ -1,11 +1,11 @@
-package fileHandler;
+package fileHandler.fileHandling.text;
 
+import java.util.ArrayList;
 import java.io.File;
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.ArrayList;
 
 class TextWriter {
     protected void writeToFile(String filePath, Charset encoding, ArrayList<String> writableLines){

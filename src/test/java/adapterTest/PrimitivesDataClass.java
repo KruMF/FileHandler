@@ -1,11 +1,8 @@
 package adapterTest;
 
-import fileHandler.FileHandler;
+import fileHandler.fileHandling.FileHandler;
+import fileHandler.dataTypes.primitives.*;
 import fileHandler.adapters.AbstractAdapter;
-import fileHandler.dataTypes.primitives.IEBoolean;
-import fileHandler.dataTypes.primitives.IEFloat;
-import fileHandler.dataTypes.primitives.IEInteger;
-import fileHandler.dataTypes.primitives.IEString;
 
 import java.util.ArrayList;
 

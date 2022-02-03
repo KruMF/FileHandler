@@ -1,4 +1,4 @@
-package fileHandler;
+package fileHandler.utilities;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -14,7 +14,7 @@ public class TextConversion {
      * @return ArrayList of string arrays separated by separator.
      */
     public static ArrayList<String[]> separateLines(String separator, ArrayList<String> lines) {
-        separator = NullCheck.nullSeparatorCheck(separator);
+        separator = NullCheck.separatorCheck(separator);
         if (separabilityCheck(separator, lines)) {
             ArrayList<String[]> returnableData = new ArrayList<>();
 
@@ -76,7 +76,7 @@ public class TextConversion {
     //TODO: add javadoc
     public static ArrayList<String> combineLines(String separator, ArrayList<String[]> separatedLines) {
         try {
-            separator = NullCheck.nullSeparatorCheck(separator);
+            separator = NullCheck.separatorCheck(separator);
             ArrayList<String> combinedLines = new ArrayList<>();
 
             for (String[] splitLine : separatedLines) {

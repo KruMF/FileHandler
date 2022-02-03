@@ -1,4 +1,7 @@
-package fileHandler;
+package fileHandler.fileHandling;
+
+import fileHandler.fileHandling.text.TextHandler;
+import fileHandler.utilities.NullCheck;
 
 import java.io.File;
 
@@ -7,15 +10,15 @@ import java.io.File;
 public class FileHandler {
     protected String directory;
 
-    public TextHandler text = new TextHandler();
-    public ImageHandler images = new ImageHandler();
+    public TextHandler text;
+    public ImageHandler images;
 
     /**
      * Default FileHandler constructor with empty string as directory.
      * Use this constructor with caution.
      */
     public FileHandler() {
-        this.directory = NullCheck.nullDirectoryCheck(null);
+        this(null);
     }
 
     /**
@@ -24,7 +27,10 @@ public class FileHandler {
      * @param directory Directory for files. (Null - empty string)
      */
     public FileHandler(String directory) {
-        this.directory = NullCheck.nullDirectoryCheck(directory);
+        setDirectory(directory);
+
+        text = new TextHandler();
+        images = new ImageHandler();
     }
 
     /**
@@ -33,7 +39,7 @@ public class FileHandler {
      * @param directory New directory. (Null - empty string)
      */
     public void setDirectory(String directory) {
-        this.directory = NullCheck.nullDirectoryCheck(directory);
+        this.directory = NullCheck.directoryCheck(directory);
     }
 
     /**

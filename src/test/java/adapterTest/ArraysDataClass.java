@@ -1,15 +1,13 @@
 package adapterTest;
 
-import com.google.inject.internal.Nullable;
-import fileHandler.FileHandler;
+import fileHandler.fileHandling.FileHandler;
+import fileHandler.dataTypes.arrays.*;
 import fileHandler.adapters.AbstractAdapter;
-import fileHandler.dataTypes.arrays.IEBooleanArray;
-import fileHandler.dataTypes.arrays.IEFloatArray;
-import fileHandler.dataTypes.arrays.IEIntegerArray;
-import fileHandler.dataTypes.arrays.IEStringArray;
-import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
+
+import com.google.inject.internal.Nullable;
+import org.jetbrains.annotations.NotNull;
 
 class ArraysDataClass extends AbstractAdapter {
     private static final String

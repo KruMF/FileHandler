@@ -1,7 +1,7 @@
 package generalTests;
 
-import fileHandler.FileHandler;
-import fileHandler.TextConversion;
+import fileHandler.fileHandling.FileHandler;
+import fileHandler.utilities.TextConversion;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -11,6 +11,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+//TODO: add javadoc
 public class TextTest {
     private static final String
             DIRECTORY = "src/test/resources/text",

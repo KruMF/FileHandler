@@ -1,6 +1,6 @@
 package adapterTest;
 
-import fileHandler.FileHandler;
+import fileHandler.fileHandling.FileHandler;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;

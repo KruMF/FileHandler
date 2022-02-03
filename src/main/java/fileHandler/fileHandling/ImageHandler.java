@@ -1,9 +1,9 @@
-package fileHandler;
+package fileHandler.fileHandling;
 
-import javax.imageio.ImageIO;
-import java.awt.*;
 import java.io.File;
 import java.io.IOException;
+import java.awt.Image;
+import javax.imageio.ImageIO;
 
 //TODO: add javadoc
 public class ImageHandler {

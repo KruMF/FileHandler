@@ -1,6 +1,6 @@
 package fileHandler.adapters;
 
-import fileHandler.FileHandler;
+import fileHandler.fileHandling.FileHandler;
 
 import java.util.ArrayList;
 
