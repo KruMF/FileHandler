@@ -5,7 +5,9 @@ import fileHandler.utilities.NullCheck;
 
 import java.io.File;
 
-//TODO: add javadoc
+/**
+ * Main class of the file handler.
+ */
 @SuppressWarnings("unused")
 public class FileHandler {
     protected String directory;
@@ -34,7 +36,7 @@ public class FileHandler {
     }
 
     /**
-     * Sets the directory.
+     * Sets the directory of the file handler.
      *
      * @param directory New directory. (Null - empty string)
      */
@@ -43,7 +45,7 @@ public class FileHandler {
     }
 
     /**
-     * Gets the current directory.
+     * Gets the current directory of the file handler.
      *
      * @return Current directory.
      */
