@@ -2,6 +2,7 @@ package adapterTest;
 
 import fileHandler.fileHandling.FileHandler;
 
+import general.TestSettings;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -9,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 //TODO: finish this and add javadoc
 public class AdapterTest {
-    private static final String DIRECTORY = "src/test/resources/adapterTest";
+    private static final String DIRECTORY = TestSettings.RESOURCE_LOCATION + "/adapterTest";
     private static FileHandler fileHandler;
 
     private static PrimitivesDataClass primitives;

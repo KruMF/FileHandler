@@ -6,6 +6,7 @@ import fileHandler.utilities.TextConversion;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import general.TestSettings;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -14,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.*;
 //TODO: add javadoc
 public class TextTest {
     private static final String
-            DIRECTORY = "src/test/resources/text",
+            DIRECTORY = TestSettings.RESOURCE_LOCATION + "/text",
             READ_TEST_FILE_NAME = "textReadTest",
             WRITE_TEST_FILE_NAME = "textWriteTest";
 

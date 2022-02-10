@@ -79,9 +79,9 @@ public class FileHandler {
             File file = new File(path(fileName));
 
             if (!file.exists()) {
-                System.out.println("File not found");
+                System.out.println("File not found.");
             } else if (!file.canRead()) {
-                System.out.println("File not readable");
+                System.out.println("File not readable.");
             } else return true;
         }
 
