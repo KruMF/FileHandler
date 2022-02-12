@@ -31,9 +31,29 @@ public class AdapterTest {
         arrays.exportData(fileHandler, "");
     }
 
+    /*
+     * TODO: primitive adapter tests to add:
+     *      initialize - default values and file saving
+     *      1. value setting
+     *      2. loading values from file
+     *      3. getting values
+     */
     @Test
-    void test1() {
+    void primitiveAdapterTest() {
         //TODO: finish this
-        assertEquals(false, true, "test not ready yet");
+        assertEquals(false, true, "primitive adapter test not ready yet");
+    }
+
+    /*
+     * TODO: array adapter tests to add:
+     *      initialize - default values and file saving
+     *      1. value setting
+     *      2. loading values from file
+     *      3. getting values
+     */
+    @Test
+    void arrayAdapterTest() {
+        //TODO: finish this
+        assertEquals(false, true, "array adapter test not ready yet");
     }
 }
