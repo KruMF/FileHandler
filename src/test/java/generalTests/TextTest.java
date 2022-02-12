@@ -12,7 +12,9 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-//TODO: add javadoc
+/**
+ * Tests for text reading and writing.
+ */
 public class TextTest {
     private static final String
             DIRECTORY = TestSettings.RESOURCE_LOCATION + "/text",
@@ -104,6 +106,9 @@ public class TextTest {
         assertLinesMatch(expected, actual, "Not converting read lines to map of string arrays.");
     }
 
+    /**
+     * Tests writing text to file.
+     */
     @Test
     void writeTest() {
         String

@@ -10,7 +10,9 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-//TODO: add javadoc
+/**
+ * General tests for FileHandler.
+ */
 public class GeneralTest {
     private static final String
             DIRECTORY = TestSettings.RESOURCE_LOCATION,
@@ -36,6 +38,9 @@ public class GeneralTest {
         assertEquals(expected, actual, "Not creating file path correctly.");
     }
 
+    /**
+     * Tests existence check with directories.
+     */
     @Test
     void directoryExistenceTest() {
         String testName = "Directory existence test";
