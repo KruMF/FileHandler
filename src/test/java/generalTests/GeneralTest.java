@@ -4,6 +4,7 @@ import fileHandler.fileHandling.FileHandler;
 
 import general.TestSettings;
 
+import general.TestUtilities;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -18,12 +19,6 @@ public class GeneralTest {
             EMPTY_FILE_NAME = "emptyFile";
 
     private static FileHandler fileHandler;
-
-    private static void printMessage(String message) {
-        if (TestSettings.CONSOLE_OUT) {
-            System.out.println(message);
-        }
-    }
 
     @BeforeAll
     static void initialize() {
@@ -46,7 +41,7 @@ public class GeneralTest {
         String testName = "Directory existence test";
         String testFailMessage = testName + " not working.";
 
-        printMessage(testName);
+        TestUtilities.consolePrint(testName);
 
         assertFalse(
                 checkDirectory(NON_EXISTENT_DIRECTORY),
@@ -59,10 +54,10 @@ public class GeneralTest {
 
     private boolean checkDirectory(String directoryName) {
         if (fileHandler.checkFileStatus(directoryName)) {
-            printMessage("Directory found at: " + fileHandler.path(directoryName));
+            TestUtilities.consolePrint("Directory found at: " + fileHandler.path(directoryName));
             return true;
         } else {
-            printMessage("Directory not found at: " + fileHandler.path(directoryName));
+            TestUtilities.consolePrint("Directory not found at: " + fileHandler.path(directoryName));
             return false;
         }
     }
