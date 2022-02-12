@@ -11,7 +11,6 @@ import static org.junit.jupiter.api.Assertions.*;
 //TODO: finish this and add javadoc
 public class AdapterTest {
     private static final String DIRECTORY_NAME = "adapterTest";
-    private static final String DIRECTORY_PATH = TestSettings.RESOURCE_LOCATION + "/" + DIRECTORY_NAME;
     private static FileHandler fileHandler;
 
     private static PrimitivesDataClass primitives;
@@ -19,9 +18,11 @@ public class AdapterTest {
 
     @BeforeAll
     public static void initialize() {
-        fileHandler = new FileHandler(DIRECTORY_PATH);
+        fileHandler = new FileHandler(TestSettings.RESOURCE_LOCATION);
+
         primitives = new PrimitivesDataClass(DIRECTORY_NAME);
         arrays = new ArraysDataClass(DIRECTORY_NAME);
+
         exportDefaultValues();
     }
 
