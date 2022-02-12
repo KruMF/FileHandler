@@ -10,17 +10,16 @@ import com.google.inject.internal.Nullable;
 import org.jetbrains.annotations.NotNull;
 
 class ArraysDataClass extends AbstractAdapter {
-    private static final String
-            ADAPTER_DIRECTORY = "adapterTest",
-            ADAPTER_FILE_NAME = "arrays";
+    private static final String ADAPTER_FILE_NAME = "arrays";
 
     IEBooleanArray var_booleanArray = new IEBooleanArray("booleans", new boolean[] {false, true});
     IEIntegerArray var_integerArray = new IEIntegerArray("integers", new int[] {1, 2, 3});
     IEFloatArray var_floatArray = new IEFloatArray("floats", new float[] {1.2f, 3.4f});
+    IEDoubleArray var_doubleArray = new IEDoubleArray("doubles", new double[] {1.2, 3.4});
     IEStringArray var_stringArray = new IEStringArray("strings", new String[] {"value1", "value2"});
 
-    ArraysDataClass() {
-        super(ADAPTER_DIRECTORY, ADAPTER_FILE_NAME);
+    ArraysDataClass(String directory) {
+        super(directory, ADAPTER_FILE_NAME);
     }
 
     @Override
@@ -28,6 +27,7 @@ class ArraysDataClass extends AbstractAdapter {
         var_booleanArray.resetValue();
         var_integerArray.resetValue();
         var_floatArray.resetValue();
+        var_doubleArray.resetValue();
         var_stringArray.resetValue();
     }
 
@@ -43,6 +43,8 @@ class ArraysDataClass extends AbstractAdapter {
                 var_integerArray.parseStringArrayToValue(var_integerArray.separateValue(line));
             } else if (var_floatArray.compareKey(key)) {
                 var_floatArray.parseStringArrayToValue(var_floatArray.separateValue(line));
+            } else if (var_doubleArray.compareKey(key)) {
+                var_doubleArray.parseStringArrayToValue(var_doubleArray.separateValue(line));
             } else if (var_stringArray.compareKey(key)) {
                 var_stringArray.parseStringArrayToValue(var_stringArray.separateValue(line));
             } else {
@@ -57,6 +59,7 @@ class ArraysDataClass extends AbstractAdapter {
             add(var_booleanArray.combineKeyAndValue());
             add(var_integerArray.combineKeyAndValue());
             add(var_floatArray.combineKeyAndValue());
+            add(var_doubleArray.combineKeyAndValue());
             add(var_stringArray.combineKeyAndValue());
         }};
     }

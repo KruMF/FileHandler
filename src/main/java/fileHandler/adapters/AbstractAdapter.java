@@ -11,8 +11,8 @@ import org.jetbrains.annotations.NotNull;
 public abstract class AbstractAdapter extends ChildDirectory implements AdapterInterface {
     private String fileName;
 
-    public AbstractAdapter(@NotNull String directory, @NotNull String fileName) {
-        super(directory);
+    public AbstractAdapter(@NotNull String directoryName, @NotNull String fileName) {
+        super(directoryName);
         setFileName(fileName);
     }
 

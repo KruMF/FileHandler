@@ -10,17 +10,16 @@ import com.google.inject.internal.Nullable;
 import org.jetbrains.annotations.NotNull;
 
 class PrimitivesDataClass extends AbstractAdapter {
-    private static final String
-            ADAPTER_DIRECTORY = "adapterTest",
-            ADAPTER_FILE_NAME = "primitives";
+    private static final String ADAPTER_FILE_NAME = "primitives";
 
     IEBoolean var_boolean = new IEBoolean("boolean", true);
     IEInteger var_integer = new IEInteger("integer", 123);
     IEFloat var_float = new IEFloat("float", 1.23f);
+    IEDouble var_double = new IEDouble("double", 1.23);
     IEString var_string = new IEString("string", "value");
 
-    PrimitivesDataClass() {
-        super(ADAPTER_DIRECTORY, ADAPTER_FILE_NAME);
+    PrimitivesDataClass(String directory) {
+        super(directory, ADAPTER_FILE_NAME);
     }
 
     @Override
