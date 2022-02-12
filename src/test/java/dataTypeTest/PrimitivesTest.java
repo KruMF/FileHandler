@@ -3,6 +3,7 @@ package dataTypeTest;
 import fileHandler.dataTypes.IEPrimitive;
 import fileHandler.dataTypes.primitives.*;
 
+import general.TestSettings;
 import org.jetbrains.annotations.NotNull;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -60,9 +61,11 @@ public class PrimitivesTest {
                 FLOAT_DEFAULT_VALUE, var_float.getValue(),
                 DataTypeTestHelper.defaultValueTest_errorMessage("IEFloat"));
 
-        assertEquals(
-                DOUBLE_DEFAULT_VALUE, var_double.getValue(),
-                DataTypeTestHelper.defaultValueTest_errorMessage("IEDouble"));
+        if (TestSettings.DO_DOUBLES) {
+            assertEquals(
+                    DOUBLE_DEFAULT_VALUE, var_double.getValue(),
+                    DataTypeTestHelper.defaultValueTest_errorMessage("IEDouble"));
+        }
 
         assertEquals(
                 STRING_DEFAULT_VALUE, var_string.getValue(),
@@ -83,9 +86,11 @@ public class PrimitivesTest {
                 checkValueParse(var_float, String.valueOf(FLOAT_TEST_VALUE)),
                 DataTypeTestHelper.valueParseTest_errorMessage("IEFloat"));
 
-        assertTrue(
-                checkValueParse(var_double, String.valueOf(DOUBLE_TEST_VALUE)),
-                DataTypeTestHelper.valueParseTest_errorMessage("IEDouble"));
+        if (TestSettings.DO_DOUBLES) {
+            assertTrue(
+                    checkValueParse(var_double, String.valueOf(DOUBLE_TEST_VALUE)),
+                    DataTypeTestHelper.valueParseTest_errorMessage("IEDouble"));
+        }
 
         assertTrue(
                 checkValueParse(var_string, STRING_TEST_VALUE),

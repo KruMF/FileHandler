@@ -7,6 +7,7 @@ import fileHandler.adapters.AbstractAdapter;
 import java.util.ArrayList;
 
 import com.google.inject.internal.Nullable;
+import general.TestSettings;
 import org.jetbrains.annotations.NotNull;
 
 class PrimitivesDataClass extends AbstractAdapter {
@@ -27,6 +28,7 @@ class PrimitivesDataClass extends AbstractAdapter {
         var_boolean.resetValue();
         var_integer.resetValue();
         var_float.resetValue();
+        var_double.resetValue();
         var_string.resetValue();
     }
 
@@ -42,6 +44,8 @@ class PrimitivesDataClass extends AbstractAdapter {
                 var_integer.parseStringArrayToValue(var_integer.separateValue(line));
             } else if (var_float.compareKey(key)) {
                 var_float.parseStringArrayToValue(var_float.separateValue(line));
+            } else if (var_double.compareKey(key) && TestSettings.DO_DOUBLES) {
+                var_double.parseStringArrayToValue(var_double.separateValue(line));
             } else if (var_string.compareKey(key)) {
                 var_string.parseStringArrayToValue(var_string.separateValue(line));
             } else {
@@ -56,6 +60,9 @@ class PrimitivesDataClass extends AbstractAdapter {
             add(var_boolean.combineKeyAndValue());
             add(var_integer.combineKeyAndValue());
             add(var_float.combineKeyAndValue());
+            if (TestSettings.DO_DOUBLES) {
+                add(var_double.combineKeyAndValue());
+            }
             add(var_string.combineKeyAndValue());
         }};
     }

@@ -7,6 +7,7 @@ import fileHandler.adapters.AbstractAdapter;
 import java.util.ArrayList;
 
 import com.google.inject.internal.Nullable;
+import general.TestSettings;
 import org.jetbrains.annotations.NotNull;
 
 class ArraysDataClass extends AbstractAdapter {
@@ -43,7 +44,7 @@ class ArraysDataClass extends AbstractAdapter {
                 var_integerArray.parseStringArrayToValue(var_integerArray.separateValue(line));
             } else if (var_floatArray.compareKey(key)) {
                 var_floatArray.parseStringArrayToValue(var_floatArray.separateValue(line));
-            } else if (var_doubleArray.compareKey(key)) {
+            } else if (var_doubleArray.compareKey(key) && TestSettings.DO_DOUBLES) {
                 var_doubleArray.parseStringArrayToValue(var_doubleArray.separateValue(line));
             } else if (var_stringArray.compareKey(key)) {
                 var_stringArray.parseStringArrayToValue(var_stringArray.separateValue(line));
@@ -59,7 +60,9 @@ class ArraysDataClass extends AbstractAdapter {
             add(var_booleanArray.combineKeyAndValue());
             add(var_integerArray.combineKeyAndValue());
             add(var_floatArray.combineKeyAndValue());
-            add(var_doubleArray.combineKeyAndValue());
+            if (TestSettings.DO_DOUBLES) {
+                add(var_doubleArray.combineKeyAndValue());
+            }
             add(var_stringArray.combineKeyAndValue());
         }};
     }
