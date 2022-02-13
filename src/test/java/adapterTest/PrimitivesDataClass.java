@@ -3,11 +3,11 @@ package adapterTest;
 import fileHandler.fileHandling.FileHandler;
 import fileHandler.dataTypes.primitives.*;
 import fileHandler.adapters.AbstractAdapter;
+import general.TestSettings;
 
 import java.util.ArrayList;
 
 import com.google.inject.internal.Nullable;
-import general.TestSettings;
 import org.jetbrains.annotations.NotNull;
 
 class PrimitivesDataClass extends AbstractAdapter {
