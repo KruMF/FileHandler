@@ -1,17 +1,23 @@
-import fileHandler.FileHandler;
-import fileHandler.TextConversion;
+package generalTests;
+
+import fileHandler.fileHandling.FileHandler;
+import fileHandler.utilities.TextConversion;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import general.TestSettings;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Tests for text reading and writing.
+ */
 public class TextTest {
     private static final String
-            DIRECTORY = "src/test/resources/text",
+            DIRECTORY = TestSettings.RESOURCE_LOCATION + "/text",
             READ_TEST_FILE_NAME = "textReadTest",
             WRITE_TEST_FILE_NAME = "textWriteTest";
 
@@ -20,28 +26,6 @@ public class TextTest {
     @BeforeAll
     static void initialize() {
         fileHandler = new FileHandler(DIRECTORY);
-    }
-
-    /**
-     * Tests file path creation.
-     */
-    @Test
-    void pathTest() {
-        String fileName = "file";
-        String expected = DIRECTORY + "/" + fileName;
-        String actual = fileHandler.path(fileName);
-        assertEquals(expected, actual, "Not creating file path correctly.");
-    }
-
-    /**
-     * Tests file existence check.
-     */
-    @Test
-    void fileExistenceCheckTest() {
-        String fileName = "emptyFile";
-        assertTrue(
-                fileHandler.checkFileStatus(fileName),
-                "File existence check test not working.");
     }
 
     /**
@@ -122,6 +106,9 @@ public class TextTest {
         assertLinesMatch(expected, actual, "Not converting read lines to map of string arrays.");
     }
 
+    /**
+     * Tests writing text to file.
+     */
     @Test
     void writeTest() {
         String

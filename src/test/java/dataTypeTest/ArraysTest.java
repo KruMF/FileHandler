@@ -3,6 +3,8 @@ package dataTypeTest;
 import fileHandler.dataTypes.IEPrimitive;
 import fileHandler.dataTypes.arrays.*;
 
+import general.TestSettings;
+
 import org.jetbrains.annotations.NotNull;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -12,8 +14,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 //TODO: add javadoc
 public class ArraysTest {
-    private static final boolean DO_DOUBLES = false;
-
     private static final String
             BOOLEANS_KEY = "Booleans",
             INTEGERS_KEY = "Integers",
@@ -62,7 +62,7 @@ public class ArraysTest {
                 FLOATS_DEFAULT_VALUE, var_floats.getValue(),
                 DataTypeTestHelper.defaultValueTest_errorMessage("IEFloatArray"));
 
-        if (DO_DOUBLES) {
+        if (TestSettings.DO_DOUBLES) {
             assertArrayEquals(
                     DOUBLES_DEFAULT_VALUE, var_doubles.getValue(),
                     DataTypeTestHelper.defaultValueTest_errorMessage("IEDoubleArray"));
@@ -87,7 +87,7 @@ public class ArraysTest {
                 checkValueParse(var_floats, expectedStringArray_Float(FLOATS_TEST_VALUE)),
                 DataTypeTestHelper.valueParseTest_errorMessage("IEFloat"));
 
-        if (DO_DOUBLES) {
+        if (TestSettings.DO_DOUBLES) {
             assertTrue(
                     checkValueParse(var_doubles, expectedStringArray_Double(DOUBLES_TEST_VALUE)),
                     DataTypeTestHelper.valueParseTest_errorMessage("IEDouble"));

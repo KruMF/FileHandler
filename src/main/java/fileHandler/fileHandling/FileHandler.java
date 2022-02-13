@@ -1,21 +1,26 @@
-package fileHandler;
+package fileHandler.fileHandling;
+
+import fileHandler.fileHandling.text.TextHandler;
+import fileHandler.utilities.NullCheck;
 
 import java.io.File;
 
-//TODO: add javadoc
+/**
+ * Main class of the file handler.
+ */
 @SuppressWarnings("unused")
 public class FileHandler {
     protected String directory;
 
-    public TextHandler text = new TextHandler();
-    public ImageHandler images = new ImageHandler();
+    public TextHandler text;
+    public ImageHandler images;
 
     /**
      * Default FileHandler constructor with empty string as directory.
      * Use this constructor with caution.
      */
     public FileHandler() {
-        this.directory = NullCheck.nullDirectoryCheck(null);
+        this(null);
     }
 
     /**
@@ -24,20 +29,23 @@ public class FileHandler {
      * @param directory Directory for files. (Null - empty string)
      */
     public FileHandler(String directory) {
-        this.directory = NullCheck.nullDirectoryCheck(directory);
+        setDirectory(directory);
+
+        text = new TextHandler();
+        images = new ImageHandler();
     }
 
     /**
-     * Sets the directory.
+     * Sets the directory of the file handler.
      *
      * @param directory New directory. (Null - empty string)
      */
     public void setDirectory(String directory) {
-        this.directory = NullCheck.nullDirectoryCheck(directory);
+        this.directory = NullCheck.directoryCheck(directory);
     }
 
     /**
-     * Gets the current directory.
+     * Gets the current directory of the file handler.
      *
      * @return Current directory.
      */
@@ -71,9 +79,9 @@ public class FileHandler {
             File file = new File(path(fileName));
 
             if (!file.exists()) {
-                System.out.println("File not found");
+                System.out.println("File not found.");
             } else if (!file.canRead()) {
-                System.out.println("File not readable");
+                System.out.println("File not readable.");
             } else return true;
         }
 

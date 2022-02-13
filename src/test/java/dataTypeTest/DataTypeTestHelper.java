@@ -51,6 +51,14 @@ abstract class DataTypeTestHelper {
                 " value import or export.");
     }
 
+    /**
+     * Compares two string arrays.
+     *
+     * @param expected Expected string array.
+     * @param actual Actual string array.
+     *
+     * @return True, if both arrays have equal contents; false, if not.
+     */
     static boolean compareStringArrays(@Nullable String[] expected, @Nullable String[] actual) {
         if (expected == null || actual == null
                 || expected.length <= 0

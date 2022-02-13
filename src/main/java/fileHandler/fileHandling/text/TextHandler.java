@@ -1,4 +1,7 @@
-package fileHandler;
+package fileHandler.fileHandling.text;
+
+import fileHandler.fileHandling.FileHandler;
+import fileHandler.utilities.*;
 
 import java.nio.charset.Charset;
 import java.util.ArrayList;
@@ -17,9 +20,9 @@ public class TextHandler {
     /**
      * Creates a text handler with default parameters.
      */
-    protected TextHandler() {
+    public TextHandler() {
         encoding = EncodingUtilities.encodingTypeToCharset();
-        separator = NullCheck.nullSeparatorCheck(null);
+        separator = NullCheck.separatorCheck(null);
     }
 
     /**
@@ -29,7 +32,7 @@ public class TextHandler {
      */
     @SuppressWarnings("unused")
     public void setSeparator(String separator) {
-        this.separator = NullCheck.nullSeparatorCheck(separator);
+        this.separator = NullCheck.separatorCheck(separator);
     }
 
     /**
