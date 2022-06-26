@@ -7,7 +7,7 @@ import general.TestSettings;
 
 import java.util.ArrayList;
 
-import com.google.inject.internal.Nullable;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
 
 class ArraysDataClass extends AbstractAdapter {
