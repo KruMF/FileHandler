@@ -1,0 +1,4 @@
+boolean : true
+integer : 123
+float : 1.23
+string : value
