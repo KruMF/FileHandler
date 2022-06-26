@@ -2,7 +2,7 @@ package dataTypeTest;
 
 import java.util.Objects;
 
-import com.google.inject.internal.Nullable;
+import org.jetbrains.annotations.Nullable;
 
 /**
  * A helper class for data type tests.

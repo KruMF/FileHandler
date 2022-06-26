@@ -2,7 +2,6 @@ package dataTypeTest;
 
 import fileHandler.dataTypes.IEPrimitive;
 import fileHandler.dataTypes.arrays.*;
-
 import general.TestSettings;
 
 import org.jetbrains.annotations.NotNull;

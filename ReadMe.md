@@ -1,24 +1,36 @@
-<h1>File Handler</h1>
+# File Handler
+
+[![](https://jitpack.io/v/Krumuvecis/FileHandler.svg)](https://jitpack.io/#Krumuvecis/FileHandler)
 
 by [Krumuvecis](https://github.com/Krumuvecis)
 
 Free to use and modify for whatever purposes. No copyrights apply.
 
 
-<h2>Requirements</h2>
+## Abstract
 
-* JDK: 17.0.2
-* Maven compiler: 17
-* Maven Surefire: 3.0.0-M5
-* JUnit: Jupiter 5.8.2
+Reads and writes files.
 
-<h2>Instructions</h2>
+*Work in progress*
+
+
+## Requirements
+
+* JDK: 18
+* Maven compiler: 18
+* Maven Surefire: 3.0.0-M7
+* jetbrains annotations: 23.0.0
+* JUnit: Jupiter 5.9.0-M1
+
+
+## Instructions
 
 See `Manual.md` for instructions.
 
-<h2>Notes</h2>
 
-<h3>Supported text encodings</h3>
+## Notes
+
+### Supported text encodings
 
 * Windows-1257 (default)
 * UTF-8
@@ -26,9 +38,8 @@ See `Manual.md` for instructions.
 Contact [Krumuvecis](https://github.com/Krumuvecis), if more options needed.
 
 
-<h3>Versioning</h3>
+### Versioning
 
+*Latest working version available at `master` branch.*
 
-<i>Latest working version available at `master` branch.</i>
-
-<i>Development happening at `develop` branch.</i>
+*Development happening at `develop` branch.*

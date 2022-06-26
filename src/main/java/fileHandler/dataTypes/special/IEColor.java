@@ -5,7 +5,7 @@ import fileHandler.dataTypes.IEPrimitive;
 import java.awt.Color;
 import java.util.Objects;
 
-import com.google.inject.internal.Nullable;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
 
 /**

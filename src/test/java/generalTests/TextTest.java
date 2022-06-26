@@ -2,11 +2,11 @@ package generalTests;
 
 import fileHandler.fileHandling.FileHandler;
 import fileHandler.utilities.TextConversion;
+import general.TestSettings;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import general.TestSettings;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 

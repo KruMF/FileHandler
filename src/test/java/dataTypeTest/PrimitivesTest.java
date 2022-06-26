@@ -2,8 +2,8 @@ package dataTypeTest;
 
 import fileHandler.dataTypes.IEPrimitive;
 import fileHandler.dataTypes.primitives.*;
-
 import general.TestSettings;
+
 import org.jetbrains.annotations.NotNull;
 
 import org.junit.jupiter.api.BeforeEach;
