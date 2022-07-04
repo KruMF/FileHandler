@@ -1,6 +1,6 @@
 # File Handler
 
-[![](https://jitpack.io/v/Krumuvecis/FileHandler.svg)](https://jitpack.io/#Krumuvecis/FileHandler)
+[![](https://jitpack.io/v/KruMF/FileHandler.svg)](https://jitpack.io/#KruMF/FileHandler)
 
 by [Krumuvecis](https://github.com/Krumuvecis)
 
