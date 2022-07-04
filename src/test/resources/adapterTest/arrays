@@ -1,0 +1,4 @@
+booleans : false : true
+integers : 1 : 2 : 3
+floats : 1.2 : 3.4
+strings : value1 : value2
